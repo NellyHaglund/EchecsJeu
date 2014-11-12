@@ -11,9 +11,9 @@ namespace ChessGame
         public char PieceChar { get; set; }
         public int PieceValue { get; set; }
 
-        public virtual void PossibleMoves()
-        {
-            
-        }
+        //public virtual List<List<Position>> PossibleMoves()
+        //{
+        //    return
+        //}
     }
 }

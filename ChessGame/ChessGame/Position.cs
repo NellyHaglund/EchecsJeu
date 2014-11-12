@@ -14,17 +14,14 @@ namespace ChessGame
 
         public void UpdatePosition(Piece piece, Position position)
         {
-
             if (position.X >= 0 && position.X < 8 && position.Y >= 0 && position.Y < 8)
             {
-                chessboard[piece.position.X, piece.position.Y] = null;
-                piece.position.X = position.X;
-                piece.position.Y = position.Y;
+                piece.position.X = piece.position.X + position.X;
+                piece.position.Y = piece.position.Y + position.Y;
                 chessboard[position.X, position.Y] = piece;
             }
             else
             {
-
                 Console.WriteLine("Hoppsan! Error..");
             }
         }

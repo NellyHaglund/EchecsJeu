@@ -5,10 +5,15 @@ namespace ChessGame
 {
     public class Gameboard
     {
-        public Piece[,] chessboard = new Piece[8,8];
+        Player blackPlayer = new Player(ConsoleColor.Black);
+        Player whitePlayer = new Player(ConsoleColor.White);
+        public Piece[,] chessboard = new Piece[8, 8];
         List<Piece> whitePieceList = new List<Piece>();
-
         List<Piece> blackPieceList = new List<Piece>();
+        //public void GetPieceList()
+        //{
+        //    player.GetPieceList(whitePieceList, blackPieceList);
+        //}
 
         public void PrintGameboard()
         {
@@ -18,7 +23,7 @@ namespace ChessGame
                 Console.WriteLine();
                 for (int y = 0; y < 8; y++)
                 {
-                    if (chessboard[x, y] == null) 
+                    if (chessboard[x, y] == null)
                     {
 
                         Console.Write("[ ]");
@@ -36,7 +41,7 @@ namespace ChessGame
 
         public void CreateChessPieceStartPositionListForWhiteAndBlackPiecesWithDifferentValuesAndColourAndChar()
         {
-            
+
             whitePieceList.Add(chessboard[1, 0] = new Pawn(new Position(1, 0), ConsoleColor.White));
             whitePieceList.Add(chessboard[1, 1] = new Pawn(new Position(1, 1), ConsoleColor.White));
             whitePieceList.Add(chessboard[1, 2] = new Pawn(new Position(1, 2), ConsoleColor.White));
@@ -71,7 +76,7 @@ namespace ChessGame
             blackPieceList.Add(chessboard[7, 7] = new Rook(new Position(7, 7), ConsoleColor.Red));
             blackPieceList.Add(chessboard[7, 2] = new Bishop(new Position(7, 2), ConsoleColor.Red));
             blackPieceList.Add(chessboard[7, 5] = new Bishop(new Position(7, 5), ConsoleColor.Red));
-            
+
         }
     }
 }

@@ -13,9 +13,16 @@ namespace ChessGame
         static void Main(string[] args)
         {
             var gameboard = new Gameboard();
-            
+            var king = new King(new Position(2,5), ConsoleColor.White);
+            Console.WriteLine(king);
 
+            
             gameboard.CreateChessPieceStartPositionListForWhiteAndBlackPiecesWithDifferentValuesAndColourAndChar();
+            gameboard.PrintGameboard();
+            Console.ReadLine();
+
+            //gameboard.GetPieceList();
+
             gameboard.PrintGameboard();
             Console.ReadLine();
         }

@@ -14,18 +14,18 @@ namespace ChessGame
             PieceChar = 'H';   
         }
 
-        public override void PossibleMoves()
-        {
-            KnightMoves.Clear();
-            KnightMoves.Add(new Position(position.X + 1, position.Y - 2));
-            KnightMoves.Add(new Position(position.X + 2, position.Y - 1));
-            KnightMoves.Add(new Position(position.X + 2, position.Y + 1));
-            KnightMoves.Add(new Position(position.X + 1, position.Y + 2));
-            KnightMoves.Add(new Position(position.X - 1, position.Y + 2));
-            KnightMoves.Add(new Position(position.X - 2, position.Y + 1));
-            KnightMoves.Add(new Position(position.X - 2, position.Y - 1));
-            KnightMoves.Add(new Position(position.X - 1, position.Y - 2));
+        //public override List<List<Position>> PossibleMoves(Piece piece)
+        //{
+        //    KnightMoves.Clear();
+        //    KnightMoves.Add(new Position(position.X + 1, position.Y - 2));
+        //    KnightMoves.Add(new Position(position.X + 2, position.Y - 1));
+        //    KnightMoves.Add(new Position(position.X + 2, position.Y + 1));
+        //    KnightMoves.Add(new Position(position.X + 1, position.Y + 2));
+        //    KnightMoves.Add(new Position(position.X - 1, position.Y + 2));
+        //    KnightMoves.Add(new Position(position.X - 2, position.Y + 1));
+        //    KnightMoves.Add(new Position(position.X - 2, position.Y - 1));
+        //    KnightMoves.Add(new Position(position.X - 1, position.Y - 2));
 
-        }
+        //}
     }
 }

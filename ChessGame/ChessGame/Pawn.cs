@@ -8,8 +8,8 @@ namespace ChessGame
 {
     public class Pawn : Piece
     {
-
-        public Pawn() { }
+        List<Position> pawnMoves = new List<Position>();
+        //public Pawn() { }
         public Pawn(Position position, ConsoleColor color)
         {
             this.position = position;
@@ -17,6 +17,13 @@ namespace ChessGame
             PieceValue = 1;
             PieceChar = 'B';                
         }
+        //public override void PossibleMoves(Piece piece)
+        //{
+        //    pawnMoves.Clear();
+        //    pawnMoves.Add(new Position(position.X + 1, position.Y));
+        //    pawnMoves.Add(new Position(position.X - 1, position.Y));         
+
+        //}
 
     }
 }

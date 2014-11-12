@@ -22,44 +22,44 @@ namespace ChessGame
             PieceChar = 'B';   
         }
 
-        public override void PossibleMoves()
-        {
-            BishopMoves.Clear();
-            // Diagonalt nedåt mot höger
-            DownRight.Add(new Position(position.X + 1, position.Y + 1));
-            DownRight.Add(new Position(position.X + 2, position.Y + 2));
-            DownRight.Add(new Position(position.X + 3, position.Y + 3));
-            DownRight.Add(new Position(position.X + 4, position.Y + 4));
-            DownRight.Add(new Position(position.X + 5, position.Y + 5));
-            DownRight.Add(new Position(position.X + 6, position.Y + 6));
-            DownRight.Add(new Position(position.X + 7, position.Y + 7));
-            // Diagonalt nedåt mot vänster
-            DownLeft.Add(new Position(position.X + 1, position.Y - 1));
-            DownLeft.Add(new Position(position.X + 2, position.Y - 2));
-            DownLeft.Add(new Position(position.X + 3, position.Y - 3));
-            DownLeft.Add(new Position(position.X + 4, position.Y - 4));
-            DownLeft.Add(new Position(position.X + 5, position.Y - 5));
-            DownLeft.Add(new Position(position.X + 6, position.Y - 6));
-            DownLeft.Add(new Position(position.X + 7, position.Y - 7));
-            // Diagonalt uppåt mot vänster
-            UpLeft.Add(new Position(position.X - 1, position.Y + 1));
-            UpLeft.Add(new Position(position.X - 2, position.Y + 2));
-            UpLeft.Add(new Position(position.X - 3, position.Y + 3));
-            UpLeft.Add(new Position(position.X - 4, position.Y + 4));
-            UpLeft.Add(new Position(position.X - 5, position.Y + 5));
-            UpLeft.Add(new Position(position.X - 6, position.Y + 6));
-            UpLeft.Add(new Position(position.X - 7, position.Y + 7));
-            // Diagonalt uppåt mot höger
-            UpLeft.Add(new Position(position.X - 1, position.Y - 1));
-            UpLeft.Add(new Position(position.X - 2, position.Y - 2));
-            UpLeft.Add(new Position(position.X - 3, position.Y - 3));
-            UpLeft.Add(new Position(position.X - 4, position.Y - 4));
-            UpLeft.Add(new Position(position.X - 5, position.Y - 5));
-            UpLeft.Add(new Position(position.X - 6, position.Y - 6));
-            UpLeft.Add(new Position(position.X - 7, position.Y - 7));
+        //public override List<List<Position>> PossibleMoves(Piece piece)
+        //{
+        //    BishopMoves.Clear();
+        //    // Diagonalt nedåt mot höger
+        //    DownRight.Add(new Position(position.X + 1, position.Y + 1));
+        //    DownRight.Add(new Position(position.X + 2, position.Y + 2));
+        //    DownRight.Add(new Position(position.X + 3, position.Y + 3));
+        //    DownRight.Add(new Position(position.X + 4, position.Y + 4));
+        //    DownRight.Add(new Position(position.X + 5, position.Y + 5));
+        //    DownRight.Add(new Position(position.X + 6, position.Y + 6));
+        //    DownRight.Add(new Position(position.X + 7, position.Y + 7));
+        //    // Diagonalt nedåt mot vänster
+        //    DownLeft.Add(new Position(position.X + 1, position.Y - 1));
+        //    DownLeft.Add(new Position(position.X + 2, position.Y - 2));
+        //    DownLeft.Add(new Position(position.X + 3, position.Y - 3));
+        //    DownLeft.Add(new Position(position.X + 4, position.Y - 4));
+        //    DownLeft.Add(new Position(position.X + 5, position.Y - 5));
+        //    DownLeft.Add(new Position(position.X + 6, position.Y - 6));
+        //    DownLeft.Add(new Position(position.X + 7, position.Y - 7));
+        //    // Diagonalt uppåt mot vänster
+        //    UpLeft.Add(new Position(position.X - 1, position.Y + 1));
+        //    UpLeft.Add(new Position(position.X - 2, position.Y + 2));
+        //    UpLeft.Add(new Position(position.X - 3, position.Y + 3));
+        //    UpLeft.Add(new Position(position.X - 4, position.Y + 4));
+        //    UpLeft.Add(new Position(position.X - 5, position.Y + 5));
+        //    UpLeft.Add(new Position(position.X - 6, position.Y + 6));
+        //    UpLeft.Add(new Position(position.X - 7, position.Y + 7));
+        //    // Diagonalt uppåt mot höger
+        //    UpLeft.Add(new Position(position.X - 1, position.Y - 1));
+        //    UpLeft.Add(new Position(position.X - 2, position.Y - 2));
+        //    UpLeft.Add(new Position(position.X - 3, position.Y - 3));
+        //    UpLeft.Add(new Position(position.X - 4, position.Y - 4));
+        //    UpLeft.Add(new Position(position.X - 5, position.Y - 5));
+        //    UpLeft.Add(new Position(position.X - 6, position.Y - 6));
+        //    UpLeft.Add(new Position(position.X - 7, position.Y - 7));
 
 
 
-        }
+        //}
     }
 }
