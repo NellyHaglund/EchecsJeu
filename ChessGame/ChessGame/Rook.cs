@@ -5,58 +5,57 @@ namespace ChessGame
 {
     public class Rook : Piece
     {
-        List<Position> RookMoves = new List<Position>();
-        List<Position> DownDown = new List<Position>();
-        List<Position> UpUp = new List<Position>();
-        List<Position> RightRight = new List<Position>();
-        List<Position> LeftLeft = new List<Position>();
-
+        List<List<Position>> rookMoves;
 
         public Rook(Position position, ConsoleColor color)
         {
             this.position = position;
             PieceColour = color;
             PieceValue = 5;
-            PieceChar = 'T';   
+            PieceChar = 'T';
+            rookMoves = new List<List<Position>>()
+            {
+                new List<Position>()
+                {
+                    new Position(+ 1, 0),
+                    new Position(+ 2, 0),
+                    new Position(+ 3, 0),
+                    new Position(+ 4, 0),
+                    new Position(+ 5, 0),
+                    new Position(+ 6, 0),
+                    new Position(+ 7, 0),
+                },
+                new List<Position>()
+                {
+                    new Position(- 1, 0),
+                    new Position(- 2, 0),
+                    new Position(- 3, 0),
+                    new Position(- 4, 0),
+                    new Position(- 5, 0),
+                    new Position(- 6, 0),
+                    new Position(- 7, 0),
+                },
+                new List<Position>()
+                {
+                    new Position(0, + 1),
+                    new Position(0, + 2),
+                    new Position(0, + 3),
+                    new Position(0, + 4),
+                    new Position(0, + 5),
+                    new Position(0, + 6),
+                    new Position(0, + 7),
+                },
+                new List<Position>()
+                {
+                    new Position(0, - 1),
+                    new Position(0, - 2),
+                    new Position(0, - 3),
+                    new Position(0, - 4),
+                    new Position(0, - 5),
+                    new Position(0, - 6),
+                    new Position(0, - 7),
+                }
+            };
         }
-
-        //public override List<List<Position>> PossibleMoves(Piece piece)
-        //{
-        //    RookMoves.Clear();
-        //    // Rör sig lodrätt nedåt
-        //    DownDown.Add(new Position(position.X + 1, position.Y));
-        //    DownDown.Add(new Position(position.X + 2, position.Y));
-        //    DownDown.Add(new Position(position.X + 3, position.Y));
-        //    DownDown.Add(new Position(position.X + 4, position.Y));
-        //    DownDown.Add(new Position(position.X + 5, position.Y));
-        //    DownDown.Add(new Position(position.X + 6, position.Y));
-        //    DownDown.Add(new Position(position.X + 7, position.Y));
-        //    // Rör sig lodrätt uppåt
-        //    UpUp.Add(new Position(position.X - 1, position.Y));
-        //    UpUp.Add(new Position(position.X - 2, position.Y));
-        //    UpUp.Add(new Position(position.X - 3, position.Y));
-        //    UpUp.Add(new Position(position.X - 4, position.Y));
-        //    UpUp.Add(new Position(position.X - 5, position.Y));
-        //    UpUp.Add(new Position(position.X - 6, position.Y));
-        //    UpUp.Add(new Position(position.X - 7, position.Y));
-        //    // Rör sig vågrätt höger
-        //    RightRight.Add(new Position(position.X, position.Y + 1));
-        //    RightRight.Add(new Position(position.X, position.Y + 2));
-        //    RightRight.Add(new Position(position.X, position.Y + 3));
-        //    RightRight.Add(new Position(position.X, position.Y + 4));
-        //    RightRight.Add(new Position(position.X, position.Y + 5));
-        //    RightRight.Add(new Position(position.X, position.Y + 6));
-        //    RightRight.Add(new Position(position.X, position.Y + 7));
-        //    // Rör sig vågrätt vänster
-        //    LeftLeft.Add(new Position(position.X, position.Y - 1));
-        //    LeftLeft.Add(new Position(position.X, position.Y - 2));
-        //    LeftLeft.Add(new Position(position.X, position.Y - 3));
-        //    LeftLeft.Add(new Position(position.X, position.Y - 4));
-        //    LeftLeft.Add(new Position(position.X, position.Y - 5));
-        //    LeftLeft.Add(new Position(position.X, position.Y - 6));
-        //    LeftLeft.Add(new Position(position.X, position.Y - 7));
-
-
-        //}
     }
 }

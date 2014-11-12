@@ -8,28 +8,26 @@ namespace ChessGame
 {
     class Player
     {
+        ListClass listClass = new ListClass();
         private ConsoleColor color;
-        public List<Piece> playerWhiteList;
-        public List<Piece> playerBlackList;
-        public List<List<Position>> choosenPieceList;
+        private Gameboard gameboard;
+        
         public Player(ConsoleColor color)
+
         {
             this.color = color;
-        }
-        public void GetPieceList(List<Piece> listWhite, List<Piece> listBlack)
-        {
-            playerWhiteList = listWhite;
-            playerBlackList = listBlack;
-            foreach (var piece in playerBlackList)
-            {
-                GetPossibleMovesList(piece);
-            }
+            
         }
 
-        public void GetPossibleMovesList(Piece piece)
+        public void ContactGame()
         {
-            //choosenPieceList = piece.PossibleMoves();
-        }
+            listClass.GetPieceList(gameboard.whitePieceList, gameboard.blackPieceList);
 
+        }
+       
+        public void ChoosePieceToPlay()
+        {
+           
+        }
     }
 }

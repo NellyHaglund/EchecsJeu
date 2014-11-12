@@ -8,22 +8,43 @@ namespace ChessGame
 {
     public class Pawn : Piece
     {
-        List<Position> pawnMoves = new List<Position>();
-        //public Pawn() { }
+        List<List<Position>> pawnMoves;
+       
         public Pawn(Position position, ConsoleColor color)
         {
             this.position = position;
             PieceColour = color;
             PieceValue = 1;
-            PieceChar = 'B';                
+            PieceChar = 'B';
+            pawnMoves = new List<List<Position>>()
+            {
+                new List<Position>()
+                {
+                    new Position(+ 1, 0)
+                },
+                new List<Position>()
+                {
+                    new Position(- 1, 0)
+                },
+                new List<Position>()
+                {
+                    new Position(+ 1, -1)
+                },
+                new List<Position>()
+                {
+                    new Position(+ 1, +1)
+                },
+                new List<Position>()
+                {
+                    new Position(- 1, +1)
+                },
+                new List<Position>()
+                {
+                    new Position(- 1, -1)
+                },
+            };
         }
-        //public override void PossibleMoves(Piece piece)
-        //{
-        //    pawnMoves.Clear();
-        //    pawnMoves.Add(new Position(position.X + 1, position.Y));
-        //    pawnMoves.Add(new Position(position.X - 1, position.Y));         
-
-        //}
+     
 
     }
 }

@@ -5,15 +5,9 @@ namespace ChessGame
 {
     public class Gameboard
     {
-        Player blackPlayer = new Player(ConsoleColor.Black);
-        Player whitePlayer = new Player(ConsoleColor.White);
         public Piece[,] chessboard = new Piece[8, 8];
-        List<Piece> whitePieceList = new List<Piece>();
-        List<Piece> blackPieceList = new List<Piece>();
-        //public void GetPieceList()
-        //{
-        //    player.GetPieceList(whitePieceList, blackPieceList);
-        //}
+      public  List<Piece> whitePieceList = new List<Piece>();
+        public List<Piece> blackPieceList = new List<Piece>();
 
         public void PrintGameboard()
         {
