@@ -8,7 +8,7 @@ namespace ChessGame
 {
     public class Pawn : Piece
     {
-        List<List<Position>> pawnMoves;
+        
        
         public Pawn(Position position, ConsoleColor color)
         {
@@ -16,7 +16,7 @@ namespace ChessGame
             PieceColour = color;
             PieceValue = 1;
             PieceChar = 'B';
-            pawnMoves = new List<List<Position>>()
+            AllPossibleMovesList = new List<List<Position>>()
             {
                 new List<Position>()
                 {

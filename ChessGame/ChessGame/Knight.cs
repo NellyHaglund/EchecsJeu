@@ -5,14 +5,14 @@ namespace ChessGame
 {
     public class Knight : Piece
     {
-        List<List<Position>> KnightMoves;
+       
         public Knight(Position position, ConsoleColor color)
         {
             this.position = position;
             PieceColour = color;
             PieceValue = 4;
             PieceChar = 'H';
-            KnightMoves = new List<List<Position>>()
+            AllPossibleMovesList = new List<List<Position>>()
             {
                 new List<Position>()
                 {

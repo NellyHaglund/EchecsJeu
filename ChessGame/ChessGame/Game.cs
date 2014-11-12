@@ -29,12 +29,11 @@ namespace ChessGame
             bool gameOver = false;
             
 
-            while (!gameOver)
-            {
+         
 
                 whitePlayer.ChoosePieceToPlay();
 
-            }
+            
 
         }
     }

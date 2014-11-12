@@ -5,7 +5,7 @@ namespace ChessGame
 {
     public class Bishop : Piece
     {
-        List<List<Position>> bishopMoves;
+        
 
         public Bishop(Position position, ConsoleColor color)
         {
@@ -13,7 +13,7 @@ namespace ChessGame
             PieceColour = color;
             PieceValue = 3;
             PieceChar = 'L';
-            bishopMoves = new List<List<Position>>()
+            AllPossibleMovesList = new List<List<Position>>()
             {
                 new List<Position>()
                 {

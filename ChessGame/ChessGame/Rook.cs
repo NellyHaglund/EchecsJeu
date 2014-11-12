@@ -5,7 +5,7 @@ namespace ChessGame
 {
     public class Rook : Piece
     {
-        List<List<Position>> rookMoves;
+       
 
         public Rook(Position position, ConsoleColor color)
         {
@@ -13,7 +13,7 @@ namespace ChessGame
             PieceColour = color;
             PieceValue = 5;
             PieceChar = 'T';
-            rookMoves = new List<List<Position>>()
+            AllPossibleMovesList = new List<List<Position>>()
             {
                 new List<Position>()
                 {

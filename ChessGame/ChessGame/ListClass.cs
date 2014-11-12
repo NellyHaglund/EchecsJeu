@@ -10,8 +10,8 @@ namespace ChessGame
     {
         public List<Piece> playerWhiteList;
         public List<Piece> playerBlackList;
-        public List<List<Piece>> possibleMoves;
-        public List<List<Piece>> possibleKills;
+        public List<Position> possibleMoves;
+        public List<Position> possibleKills;
         private Gameboard gameboard;
 
 
@@ -20,6 +20,8 @@ namespace ChessGame
             this.gameboard = gameboard;
             playerBlackList = new List<Piece>();
             playerWhiteList = new List<Piece>();
+            possibleKills = new List<Position>();
+            possibleMoves = new List<Position>();
             SeparatePiecesIntoTwoLists();
         }
 

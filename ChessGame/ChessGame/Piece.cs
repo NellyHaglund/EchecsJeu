@@ -10,6 +10,9 @@ namespace ChessGame
         public ConsoleColor PieceColour { get; set; }
         public char PieceChar { get; set; }
         public int PieceValue { get; set; }
+        public List<List<Position>> AllPossibleMovesList { get; set; }
+        
+
 
         //public virtual List<List<Position>> PossibleMoves()
         //{

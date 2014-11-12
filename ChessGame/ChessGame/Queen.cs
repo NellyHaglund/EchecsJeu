@@ -5,7 +5,7 @@ namespace ChessGame
 {
     public class Queen : Piece
     {
-        List<List<Position>> queenMoves;
+        
 
         public Queen(Position position, ConsoleColor color)
         {
@@ -13,7 +13,7 @@ namespace ChessGame
             PieceColour = color;
             PieceValue = 9;
             PieceChar = 'D';
-            queenMoves = new List<List<Position>>()
+            AllPossibleMovesList = new List<List<Position>>()
             {
                 new List<Position>()
                 {
