@@ -28,7 +28,7 @@ namespace ChessGame
 
             foreach (var piece in gameboard.pieceList)
             {
-                if (piece.PieceColour == ConsoleColor.Black)
+                if (piece.PieceColour == ConsoleColor.Red)
                 {
                     playerBlackList.Add(piece);
                 }

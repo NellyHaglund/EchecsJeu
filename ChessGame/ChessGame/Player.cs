@@ -21,7 +21,12 @@ namespace ChessGame
        
         public void ChoosePieceToPlay()
         {
-           
+            var list = listClass.playerBlackList;
+
+            foreach (var piece in list)
+            {
+                
+            }
         }
     }
 }

@@ -23,21 +23,18 @@ namespace ChessGame
 
         public void StartGame()
         {
-
-
             gameboard.PrintGameboard();
             Console.ReadLine();
 
             bool gameOver = false;
+            
 
-
-            while (gameOver)
+            while (!gameOver)
             {
 
-
+                whitePlayer.ChoosePieceToPlay();
 
             }
-
 
         }
     }
