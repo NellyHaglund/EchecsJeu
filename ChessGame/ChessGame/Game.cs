@@ -8,25 +8,34 @@ namespace ChessGame
 {
     class Game
     {
-       ListClass listClass = new ListClass();
-       Gameboard gameboard = new Gameboard();
-       Player blackPlayer = new Player(ConsoleColor.Black);
-       Player whitePlayer = new Player(ConsoleColor.White);
+
+        private Gameboard gameboard;
+        private Player blackPlayer;
+        private Player whitePlayer;
+
+
+        public Game()
+        {
+            gameboard = new Gameboard();
+            blackPlayer = new Player(ConsoleColor.Black, gameboard);
+            whitePlayer = new Player(ConsoleColor.White, gameboard);
+        }
 
         public void StartGame()
         {
 
-            gameboard.CreateChessPieceStartPositionListForWhiteAndBlackPiecesWithDifferentValuesAndColourAndChar();
+
             gameboard.PrintGameboard();
             Console.ReadLine();
 
             bool gameOver = false;
-            //listClass.GetPieceList(gameboard.whitePieceList, gameboard.blackPieceList);
+
+
             while (gameOver)
             {
-                
 
-               
+
+
             }
 
 

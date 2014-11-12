@@ -12,30 +12,33 @@ namespace ChessGame
         public List<Piece> playerBlackList;
         public List<List<Piece>> possibleMoves;
         public List<List<Piece>> possibleKills;
+        private Gameboard gameboard;
 
-        public ListClass(List<Piece> playerWhiteList, List<Piece> playerBlackList, List<List<Piece>> possibleMoves, List<List<Piece>> possibleKills)
+
+        public ListClass(Gameboard gameboard)
         {
-            this.playerWhiteList = playerWhiteList;
-            this.playerBlackList = playerBlackList;
-            this.possibleMoves = possibleMoves;
-            this.possibleKills = possibleKills;
+            this.gameboard = gameboard;
+            playerBlackList = new List<Piece>();
+            playerWhiteList = new List<Piece>();
+            SeparatePiecesIntoTwoLists();
         }
 
-        public void GetPieceList(List<Piece> listWhite, List<Piece> listBlack)
+        public void SeparatePiecesIntoTwoLists()
         {
-            playerWhiteList = listWhite;
-            playerBlackList = listBlack;
 
-            foreach (var piece in playerWhiteList)
+            foreach (var piece in gameboard.pieceList)
             {
-                Console.WriteLine(piece);
+                if (piece.PieceColour == ConsoleColor.Black)
+                {
+                    playerBlackList.Add(piece);
+                }
+                else
+                {
+                    playerWhiteList.Add(piece);
+                }
             }
-            Console.ReadKey();
+
         }
 
-        //private void GetPossibleMoves(Piece piece)
-        //{
-        //    piece.ToString();
-        //}
     }
 }

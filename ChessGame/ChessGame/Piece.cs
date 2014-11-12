@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ChessGame
 {
-    public class Piece : Gameboard
+    public class Piece
     {
 
         public Position position;   

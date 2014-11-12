@@ -12,7 +12,7 @@ namespace ChessGame
             this.position = position;
             PieceColour = color;
             PieceValue = 3;
-            PieceChar = 'B';
+            PieceChar = 'L';
             bishopMoves = new List<List<Position>>()
             {
                 new List<Position>()

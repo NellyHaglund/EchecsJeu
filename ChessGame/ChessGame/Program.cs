@@ -16,6 +16,8 @@ namespace ChessGame
             Game gameClass = new Game();
 
            gameClass.StartGame();
+
+            Console.ReadLine();
         }
     }
 }
