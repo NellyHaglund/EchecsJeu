@@ -39,7 +39,6 @@ namespace ChessGame
                     Console.ReadKey();
                 }
             }
-
         }
         public void SavesPossibleMoves(Piece piece)
         {
@@ -48,31 +47,44 @@ namespace ChessGame
                 TryAllDirections(directionList, piece);
             }
         }
-
         private void TryAllDirections(List<Position> directionList, Piece piece)
-        {
-            
+        {          
+            piece.PossibleMovesThisTime.Clear();
             foreach (var step in directionList)
-            {   
-                // if(piece.position.X >= 0 && piece.position.X < 8 && piece.position.Y >= 0 && piece.position.Y < 8)
-                //{
-                if (piece.position.X + step.X >= 0 && piece.position.X + step.X <= 7 && piece.position.Y+ step.Y >= 0 && piece.position.Y + step.Y <= 7)
-                {
-
-
-                    if (gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] == null)
-                    {
-
-                        listClass.possibleMoves.Add(step);
-                        Console.WriteLine("Lade till: " + piece.ToString() +  piece.position.ToString() + " &       " + step.ToString() + " i listan");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Lade inte till: " + piece.ToString() + piece.position.ToString() + " &       " + step.ToString() + " i listan");
-                    }
-                }
-                //}                 
+            {
+                ifStepIsWithinGameboard(step, piece);
             }
+        }
+
+        private void ifStepIsWithinGameboard(Position step, Piece piece)
+        {
+            if (piece.position.X + step.X >= 0 && piece.position.X + step.X <= 7 &&
+                    piece.position.Y + step.Y >= 0 && piece.position.Y + step.Y <= 7)
+            {
+                if (gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] == null)
+                {                   
+                    AddPossibleMovesToList(step, piece);
+                }
+                else if (gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y].PieceColour != piece.PieceColour)
+                {
+                    AddMovesToKillList(step, piece);                   
+                }                
+            }                              
+        }
+
+        private void AddMovesToKillList(Position step, Piece piece)
+        {
+            listClass.possibleKills.Add(step);
+
+            Console.WriteLine(piece + "Kill: " + step);
+        }
+
+        private void AddPossibleMovesToList(Position step, Piece piece)
+        {
+            piece.PossibleMovesThisTime.Add(step);
+
+            Console.WriteLine("Lade till: " + piece + piece.position +
+                                " &       " + step + " i listan");
         }
     }
 }
