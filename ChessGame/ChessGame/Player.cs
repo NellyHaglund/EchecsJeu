@@ -14,15 +14,13 @@ namespace ChessGame
 
         public Player(ConsoleColor color, Gameboard gameboard)
         {
+            this.gameboard = gameboard;
             this.color = color;
             listClass = new ListClass(gameboard);
         }
 
         public void ChoosePieceToPlay()
         {
-            //var blackList = listClass.playerBlackList;
-            //var whiteList = listClass.playerWhiteList;
-
             if (color == ConsoleColor.White)
             {
                 foreach (var piece in listClass.playerWhiteList)
@@ -35,34 +33,38 @@ namespace ChessGame
                 foreach (var piece in listClass.playerBlackList)
                 {
                     SavesPossibleMoves(piece);
-
                 }
             }
 
         }
         public void SavesPossibleMoves(Piece piece)
         {
-             
-
-             foreach (var directionList  in piece.AllPossibleMovesList)
-             {
-                 TryAllDirections(directionList);
-
-             }
-          
-        }
-
-        private  void TryAllDirections(List<Position> directionList)
-        {
-            foreach (var position in directionList)
+            foreach (var directionList in piece.AllPossibleMovesList)
             {
-                
-                
-                    listClass.possibleMoves.Add(position);
-                
-               
+                TryAllDirections(directionList, piece);
             }
         }
+        private void TryAllDirections(List<Position> directionList, Piece piece)
+        {
+            foreach (var step in directionList)
+            {
+                if (piece.position.X >= 0 && piece.position.X < 8 && piece.position.Y >= 0 && piece.position.Y < 8)
+                {
+                    if (gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] == null)
+                    {
+                        listClass.possibleMoves.Add(step);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Lägger inte till i PossibleMoves");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Du är inte inom gameboard");
+                }
 
+            }
+        }
     }
 }
