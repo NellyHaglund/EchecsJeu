@@ -32,6 +32,7 @@ namespace ChessGame
          
 
                 whitePlayer.ChoosePieceToPlay();
+                blackPlayer.ChoosePieceToPlay();
 
             
 

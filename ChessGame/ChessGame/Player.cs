@@ -26,6 +26,8 @@ namespace ChessGame
                 foreach (var piece in listClass.playerWhiteList)
                 {
                     SavesPossibleMoves(piece);
+                    Console.WriteLine("White");
+                    Console.ReadKey();
                 }
             }
             else
@@ -33,6 +35,8 @@ namespace ChessGame
                 foreach (var piece in listClass.playerBlackList)
                 {
                     SavesPossibleMoves(piece);
+                    Console.WriteLine("Black");
+                    Console.ReadKey();
                 }
             }
 
@@ -44,26 +48,30 @@ namespace ChessGame
                 TryAllDirections(directionList, piece);
             }
         }
+
         private void TryAllDirections(List<Position> directionList, Piece piece)
         {
+            
             foreach (var step in directionList)
-            {
-                if (piece.position.X >= 0 && piece.position.X < 8 && piece.position.Y >= 0 && piece.position.Y < 8)
+            {   
+                // if(piece.position.X >= 0 && piece.position.X < 8 && piece.position.Y >= 0 && piece.position.Y < 8)
+                //{
+                if (piece.position.X + step.X >= 0 && piece.position.X + step.X <= 7 && piece.position.Y+ step.Y >= 0 && piece.position.Y + step.Y <= 7)
                 {
+
+
                     if (gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] == null)
                     {
+
                         listClass.possibleMoves.Add(step);
+                        Console.WriteLine("Lade till: " + piece.ToString() +  piece.position.ToString() + " &       " + step.ToString() + " i listan");
                     }
                     else
                     {
-                        Console.WriteLine("Lägger inte till i PossibleMoves");
+                        Console.WriteLine("Lade inte till: " + piece.ToString() + piece.position.ToString() + " &       " + step.ToString() + " i listan");
                     }
                 }
-                else
-                {
-                    Console.WriteLine("Du är inte inom gameboard");
-                }
-
+                //}                 
             }
         }
     }
