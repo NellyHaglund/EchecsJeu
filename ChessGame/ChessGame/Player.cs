@@ -48,11 +48,12 @@ namespace ChessGame
             }
         }
         private void TryAllDirections(List<Position> directionList, Piece piece)
-        {          
+        {
             piece.PossibleMovesThisTime.Clear();
             foreach (var step in directionList)
             {
                 ifStepIsWithinGameboard(step, piece);
+
             }
         }
 
@@ -62,14 +63,14 @@ namespace ChessGame
                     piece.position.Y + step.Y >= 0 && piece.position.Y + step.Y <= 7)
             {
                 if (gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] == null)
-                {                   
+                {
                     AddPossibleMovesToList(step, piece);
                 }
                 else if (gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y].PieceColour != piece.PieceColour)
                 {
-                    AddMovesToKillList(step, piece);                   
-                }                
-            }                              
+                    AddMovesToKillList(step, piece);
+                }
+            }
         }
 
         private void AddMovesToKillList(Position step, Piece piece)
