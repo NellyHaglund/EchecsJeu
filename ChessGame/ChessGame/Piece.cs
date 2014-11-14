@@ -13,8 +13,8 @@ namespace ChessGame
         public List<List<Position>> AllPossibleMovesList { get; set; }
         public List<Position> PossibleMovesThisTime { get; set; }
         public List<Position> PossibleKillsThisTime { get; set; }
-        
 
+     
 
         //public virtual List<List<Position>> PossibleMoves()
         //{

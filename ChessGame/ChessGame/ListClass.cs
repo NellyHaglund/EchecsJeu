@@ -11,6 +11,7 @@ namespace ChessGame
         public List<Piece> playerWhiteList;
         public List<Piece> playerBlackList;
         private Gameboard gameboard;
+        public List<Piece> EnemysToKill;
 
 
         public ListClass(Gameboard gameboard)
@@ -18,6 +19,7 @@ namespace ChessGame
             this.gameboard = gameboard;
             playerBlackList = new List<Piece>();
             playerWhiteList = new List<Piece>();
+            EnemysToKill = new List<Piece>();
             SeparatePiecesIntoTwoLists();
         }
 

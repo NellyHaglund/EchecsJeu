@@ -12,12 +12,13 @@ namespace ChessGame
         private Gameboard gameboard;
         private Player blackPlayer;
         private Player whitePlayer;
+        private Piece piece;
 
 
         public Game()
         {
             gameboard = new Gameboard();
-            blackPlayer = new Player(ConsoleColor.Black, gameboard);
+            blackPlayer = new Player(ConsoleColor.Red, gameboard);
             whitePlayer = new Player(ConsoleColor.White, gameboard);
         }
 
@@ -27,15 +28,12 @@ namespace ChessGame
             Console.ReadLine();
 
             bool gameOver = false;
-            
-
-         
-
-                whitePlayer.ChoosePieceToPlay();
-                blackPlayer.ChoosePieceToPlay();
 
             
+            whitePlayer.ChoosePieceToPlay();
+            blackPlayer.ChoosePieceToPlay();
 
+            
         }
     }
 }
