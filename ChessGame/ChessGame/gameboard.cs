@@ -11,7 +11,6 @@ namespace ChessGame
 
         public Gameboard()
         {
-            //chessboard
             pieceList = new List<Piece>();
             CreateAndAddAllPiecesToPieceList();
             GiveStartPositionsToPieces();
@@ -67,7 +66,7 @@ namespace ChessGame
             pieceList.Add(new Pawn(new Position(1, 6), ConsoleColor.White));
             pieceList.Add(new Pawn(new Position(1, 7), ConsoleColor.White));
             pieceList.Add(new King(new Position(0, 4), ConsoleColor.White));
-            pieceList.Add(new Queen(new Position(0, 3), ConsoleColor.Red));
+            pieceList.Add(new Queen(new Position(4, 3), ConsoleColor.White));
             pieceList.Add(new Knight(new Position(0, 1), ConsoleColor.White));
             pieceList.Add(new Knight(new Position(0, 6), ConsoleColor.White));
             pieceList.Add(new Rook(new Position(0, 0), ConsoleColor.White));
@@ -75,7 +74,7 @@ namespace ChessGame
             pieceList.Add(new Bishop(new Position(0, 2), ConsoleColor.White));
             pieceList.Add(new Bishop(new Position(0, 5), ConsoleColor.White));
 
-            pieceList.Add(new Pawn(new Position(6, 0), ConsoleColor.Red));
+            pieceList.Add(new Pawn(new Position(2, 2), ConsoleColor.Red));
             pieceList.Add(new Pawn(new Position(6, 1), ConsoleColor.Red));
             pieceList.Add(new Pawn(new Position(6, 2), ConsoleColor.Red));
             pieceList.Add(new Pawn(new Position(6, 3), ConsoleColor.Red));

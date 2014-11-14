@@ -52,24 +52,97 @@ namespace ChessGame
             piece.PossibleMovesThisTime.Clear();
             foreach (var step in directionList)
             {
-                ifStepIsWithinGameboard(step, piece);
+                if (piece.PieceValue == 1)
+                {
+                    if ((piece.position.X + step.X >= 0 && piece.position.X + step.X <= 7 &&
+                    piece.position.Y + step.Y >= 0 && piece.position.Y + step.Y <= 7))
+                    {
+                        if ((gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] == null))
+                        {
 
+                            if (piece.position.Y + step.Y == piece.position.Y)
+                            {
+                                if (piece.PieceColour == ConsoleColor.White)
+                                {
+                                    if (step.X < 0)
+                                    {
+                                        return;
+                                    }
+                                }
+                                else if (piece.PieceColour == ConsoleColor.Red)
+                                {
+                                    if (step.X > 0)
+                                    {
+                                        return;
+                                    }
+                                }
+                                if (piece.PieceColour != piece.PieceColour)
+                                {
+                                    ifStepIsWithinGameboard(step, piece);
+                                    return;
+                                }
+                                else if (piece.PieceColour == piece.PieceColour)
+                                {
+                                    ifStepIsWithinGameboard(step, piece);
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                return;
+                            }
+                        }
+                    }
+                }
+                else if (piece.PieceValue == 4)
+                {
+                    if ((piece.position.X + step.X >= 0 && piece.position.X + step.X <= 7 &&
+                    piece.position.Y + step.Y >= 0 && piece.position.Y + step.Y <= 7))
+                    {
+                        if (gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] == null)
+                        {
+                            ifStepIsWithinGameboard(step, piece);
+                        }
+                        else if (piece.PieceColour != piece.PieceColour)
+                        {
+                            ifStepIsWithinGameboard(step, piece);
+                        }
+                        else if (piece.PieceColour == piece.PieceColour)
+                        {
+                            ifStepIsWithinGameboard(step, piece);
+                        }
+                    }
+                }
+                else if ((piece.position.X + step.X >= 0 && piece.position.X + step.X <= 7 &&
+                    piece.position.Y + step.Y >= 0 && piece.position.Y + step.Y <= 7))
+                {
+                    if (gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] == null)
+                    {
+                        ifStepIsWithinGameboard(step, piece);
+                    }
+                    else if (piece.PieceColour != piece.PieceColour)
+                    {
+                        ifStepIsWithinGameboard(step, piece);
+                        return;
+                    }
+                    else if (piece.PieceColour == piece.PieceColour)
+                    {
+                        ifStepIsWithinGameboard(step, piece);
+                        return;
+                    }
+                }
             }
         }
 
         private void ifStepIsWithinGameboard(Position step, Piece piece)
         {
-            if (piece.position.X + step.X >= 0 && piece.position.X + step.X <= 7 &&
-                    piece.position.Y + step.Y >= 0 && piece.position.Y + step.Y <= 7)
+            if (gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] == null)
             {
-                if (gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] == null)
-                {
-                    AddPossibleMovesToList(step, piece);
-                }
-                else if (gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y].PieceColour != piece.PieceColour)
-                {
-                    AddMovesToKillList(step, piece);
-                }
+                AddPossibleMovesToList(step, piece);
+            }
+            else if (gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y].PieceColour != piece.PieceColour)
+            {
+                AddMovesToKillList(step, piece);
             }
         }
 
