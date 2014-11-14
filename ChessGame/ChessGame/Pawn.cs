@@ -17,6 +17,7 @@ namespace ChessGame
             PieceValue = 1;
             PieceChar = 'B';
             PossibleMovesThisTime = new List<Position>();
+            PossibleKillsThisTime = new List<Position>();
             AllPossibleMovesList = new List<List<Position>>()
             {
                 new List<Position>()

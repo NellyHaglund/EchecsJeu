@@ -59,9 +59,9 @@ namespace ChessGame
                     {
                         if ((gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] == null))
                         {
-
                             if (piece.position.Y + step.Y == piece.position.Y)
                             {
+
                                 if (piece.PieceColour == ConsoleColor.White)
                                 {
                                     if (step.X < 0)
@@ -76,20 +76,39 @@ namespace ChessGame
                                         return;
                                     }
                                 }
-                                if (piece.PieceColour != piece.PieceColour)
-                                {
-                                    ifStepIsWithinGameboard(step, piece);
-                                    return;
-                                }
-                                else if (piece.PieceColour == piece.PieceColour)
-                                {
-                                    ifStepIsWithinGameboard(step, piece);
-                                    return;
-                                }
-                            }
-                            else
-                            {
+                                ifStepIsWithinGameboard(step, piece);
                                 return;
+                            }                          
+                        }
+                        else
+                        {
+                            if ((gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] != null))
+                            {
+                                if (piece.PieceColour == gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y].PieceColour)
+                                {
+                                    return;
+                                }
+                                else
+                                {
+                                    if (piece.position.Y + step.Y != piece.position.Y)
+                                    {
+                                        if (piece.PieceColour == ConsoleColor.White)
+                                        {
+                                            if (step.X < 0)
+                                            {
+                                                return;
+                                            }
+                                        }
+                                        else if (piece.PieceColour == ConsoleColor.Red)
+                                        {
+                                            if (step.X > 0)
+                                            {
+                                                return;
+                                            }
+                                        }
+                                        ifStepIsWithinGameboard(step, piece);
+                                    }
+                                }
                             }
                         }
                     }
@@ -128,7 +147,7 @@ namespace ChessGame
                     else if (piece.PieceColour == piece.PieceColour)
                     {
                         ifStepIsWithinGameboard(step, piece);
-                        return;
+                        return;                        
                     }
                 }
             }
@@ -148,7 +167,7 @@ namespace ChessGame
 
         private void AddMovesToKillList(Position step, Piece piece)
         {
-            listClass.possibleKills.Add(step);
+            piece.PossibleKillsThisTime.Add(step);
 
             Console.WriteLine(piece + "Kill: " + step);
         }
