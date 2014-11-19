@@ -76,7 +76,7 @@ namespace ChessGame
 
             pieceList.Add(new Pawn(new Position(2, 2), ConsoleColor.Red));
             pieceList.Add(new Pawn(new Position(6, 1), ConsoleColor.Red));
-            pieceList.Add(new Pawn(new Position(6, 2), ConsoleColor.Red));
+            pieceList.Add(new Pawn(new Position(5, 2), ConsoleColor.Red));
             pieceList.Add(new Pawn(new Position(6, 3), ConsoleColor.Red));
             pieceList.Add(new Pawn(new Position(6, 4), ConsoleColor.Red));
             pieceList.Add(new Pawn(new Position(6, 5), ConsoleColor.Red));

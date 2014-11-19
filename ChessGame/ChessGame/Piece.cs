@@ -12,7 +12,7 @@ namespace ChessGame
         public int PieceValue { get; set; }
         public List<List<Position>> AllPossibleMovesList { get; set; }
         public List<Position> PossibleMovesThisTime { get; set; }
-        public List<Position> PossibleKillsThisTime { get; set; }
+        public List<Piece> PossibleKillsThisTime { get; set; }
 
      
 
