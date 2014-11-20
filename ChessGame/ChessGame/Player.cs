@@ -185,7 +185,7 @@ namespace ChessGame
             {
                 /// FAAAAAAAAAAAAAAAAN!
 
-                if (piece2.position.X && piece2.position.Y == piece.position.X+step.X && piece.position.Y+step)
+                if (piece2.position.X == piece.position.X + step.X && piece.position.Y + step.Y == piece2.position.Y)
                 {
                     piece.PossibleKillsThisTime.Add(piece2);
                     Console.WriteLine("Lade till" + piece2 + "Kill: " + step + "++++++++++++++++++++++++++++++++++++++++++");
@@ -202,8 +202,6 @@ namespace ChessGame
 
             Console.WriteLine("Lade till: " + piece + piece.position +
                                 " &       " + step + " i listan");
-
-
         }
 
         public void CheckForBestMove(Position step, Piece piece)
@@ -229,12 +227,7 @@ namespace ChessGame
                 }
 
             }
-
             Console.WriteLine("Detta är det högsta värdet, {0}, och det är en {1}", highestValue, piece);
-
-
-
-
             Console.ReadLine();
         }
     }
