@@ -11,22 +11,25 @@ namespace ChessGame
         private ListClass listClass;
         private ConsoleColor color;
         private Gameboard gameboard;
-
+        Random random = new Random();
+        List<MovementOptions> PossibleFinalMoves;
         public Player(ConsoleColor color, Gameboard gameboard)
         {
             this.gameboard = gameboard;
             this.color = color;
             listClass = new ListClass(gameboard);
+            PossibleFinalMoves = new List<MovementOptions>();
         }
         public void ChoosePieceToPlay()
-        {
+        {   
+            PossibleFinalMoves.Clear();
             if (color == ConsoleColor.White)
             {
                 foreach (var piece in listClass.playerWhiteList)
                 {
                     SavesPossibleMoves(piece);
-                    Console.WriteLine("White");
-                    Console.ReadKey();
+                  //  Console.WriteLine("White");
+                  //  Console.ReadKey();
 
                 }
 
@@ -36,8 +39,8 @@ namespace ChessGame
                 foreach (var piece in listClass.playerBlackList)
                 {
                     SavesPossibleMoves(piece);
-                    Console.WriteLine("Black");
-                    Console.ReadKey();
+                    //Console.WriteLine("Black");
+                    //Console.ReadKey();
 
                 }
             }
@@ -54,12 +57,10 @@ namespace ChessGame
         private void TryAllDirections(List<Position> directionList, Piece piece)
         {
 
-            ChessGame.Position lastStep = null;
-            var count = directionList.Count();
-            piece.PossibleMovesThisTime.Clear();
+          
+          //  piece.PossibleMovesThisTime.Clear();
             foreach (var step in directionList)
             {
-                lastStep = step;
                 if (piece.PieceValue == 1)
                 {
                     GetPawnLogic(step, piece);
@@ -73,10 +74,7 @@ namespace ChessGame
                         {
                             ifStepIsWithinGameboard(step, piece);
                         }
-                        else
-                        {
-                            ifStepIsWithinGameboard(step, piece);
-                        }
+                     
                     }
                 }
                 else if (piece.position.X + step.X >= 0 && piece.position.X + step.X <= 7 &&
@@ -85,6 +83,7 @@ namespace ChessGame
                     if (gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] == null)
                     {
                         ifStepIsWithinGameboard(step, piece);
+                        
                     }
                     else
                     {
@@ -94,10 +93,7 @@ namespace ChessGame
                 }
 
             }
-            if (lastStep != null)
-            {
-                CheckForBestMove(lastStep, piece);
-            }
+           
 
 
 
@@ -187,48 +183,75 @@ namespace ChessGame
 
                 if (piece2.position.X == piece.position.X + step.X && piece.position.Y + step.Y == piece2.position.Y)
                 {
-                    piece.PossibleKillsThisTime.Add(piece2);
-                    Console.WriteLine("Lade till" + piece2 + "Kill: " + step + "++++++++++++++++++++++++++++++++++++++++++");
+                    piece.PossibleKillsThisTime.Add(piece); // lägger till alla possible kills på lista
+                  
+                    Console.WriteLine(piece2 + " På position " + piece2.position + 
+                        " Kan bli dödad av " + piece + " på pos: "+ piece.position); 
+                   //  Detta använder sen när vi valt kill för att spara undan den döde spelaren Remove från gameboard.pieceLIst och lägg till på ny lista över döda pjäser
+                    // 
                 }
             }
 
             
-            Console.WriteLine("Lade till" + piece + "Kill: " + step);
         }
 
         private void AddPossibleMovesToList(Position step, Piece piece)
         {
-            piece.PossibleMovesThisTime.Add(step);
+            MovementOptions movementOption = new MovementOptions(step,piece);
+            PossibleFinalMoves.Add(movementOption);
 
-            Console.WriteLine("Lade till: " + piece + piece.position +
-                                " &       " + step + " i listan");
+            //piece.PossibleMovesThisTime.Add(piece);
+            
+
+         //   foreach (var p in piece.PossibleMovesThisTime)
+         //   {
+         ////      Console.WriteLine(p.Item1+" På position " + piece.position+ " Kan gå: "+ p.Item2);
+         //   }
+
+            
+           Console.WriteLine("Lade till i PossibleMovesThisTime: " + piece + piece.position +
+                               " &       " + step + " i listan");
         }
 
-        public void CheckForBestMove(Position step, Piece piece)
+        //public void CheckForBestMove(Position step, Piece piece)
+        //{
+        //    Piece newPiece;
+        //    int highestValue = 0;
+        //    foreach (var piece1 in gameboard.pieceList)
+        //    {
+
+        //        newPiece = piece1;
+        //        if (piece1.position.X == step.X + piece.position.X && piece1.position.Y == step.Y + piece.position.Y)
+        //        {
+        //            listClass.EnemysToKill.Add(newPiece);
+        //        }
+        //    }
+
+        //    for (int i = 0; i < listClass.EnemysToKill.Count; i++)
+        //    {
+
+        //        if (listClass.EnemysToKill[i].PieceValue > highestValue)
+        //        {
+        //            highestValue = listClass.EnemysToKill[i].PieceValue;
+        //        }
+
+        //    }
+          //  Console.WriteLine("Detta är det högsta värdet, {0}, och det är en {1}", highestValue, piece);
+            
+        //}
+        public void RandomizeMoveInPossibleMoveList()
         {
-            Piece newPiece;
-            int highestValue = 0;
-            foreach (var piece1 in gameboard.pieceList)
-            {
+           
+            
+           int choice = random.Next(PossibleFinalMoves.Count);
+           var elementAtChoice = PossibleFinalMoves.ElementAt(choice);
+           var movement = PossibleFinalMoves[choice];
 
-                newPiece = piece1;
-                if (piece1.position.X == step.X + piece.position.X && piece1.position.Y == step.Y + piece.position.Y)
-                {
-                    listClass.EnemysToKill.Add(newPiece);
-                }
-            }
-
-            for (int i = 0; i < listClass.EnemysToKill.Count; i++)
-            {
-
-                if (listClass.EnemysToKill[i].PieceValue > highestValue)
-                {
-                    highestValue = listClass.EnemysToKill[i].PieceValue;
-                }
-
-            }
-            Console.WriteLine("Detta är det högsta värdet, {0}, och det är en {1}", highestValue, piece);
-            Console.ReadLine();
+           Console.WriteLine("pjäs"+ elementAtChoice.ToString() +" " + movement.ToString());
+           Console.ReadKey();
+           gameboard.UpdatePosition(movement);
+            
         }
     }
+
 }

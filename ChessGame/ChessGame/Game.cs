@@ -29,11 +29,22 @@ namespace ChessGame
 
             bool gameOver = false;
 
-            
-            whitePlayer.ChoosePieceToPlay();
-            blackPlayer.ChoosePieceToPlay();
+            while (gameOver == false)
+            {
 
-            
+                Console.Clear();
+                whitePlayer.ChoosePieceToPlay();
+                whitePlayer.RandomizeMoveInPossibleMoveList();
+                gameboard.PrintGameboard();
+                Console.ReadLine();
+                Console.Clear();
+
+                blackPlayer.ChoosePieceToPlay();
+                blackPlayer.RandomizeMoveInPossibleMoveList();
+                gameboard.PrintGameboard();
+                Console.ReadLine();
+                
+            }
         }
     }
 }

@@ -26,7 +26,7 @@ namespace ChessGame
                 {
                     if (chessboard[x, y] == null)
                     {
-                        
+
                         Console.Write("[ ]");
                     }
                     else
@@ -40,18 +40,19 @@ namespace ChessGame
             }
         }
 
-        public void UpdatePosition(Piece piece, Position position)
+        public void UpdatePosition(MovementOptions movement)
         {
-            if (position.X >= 0 && position.X < 8 && position.Y >= 0 && position.Y < 8)
-            {
-                piece.position.X = piece.position.X + position.X;
-                piece.position.Y = piece.position.Y + position.Y;
-                chessboard[position.X, position.Y] = piece;
-            }
-            else
-            {
-                Console.WriteLine("Hoppsan! Error..");
-            }
+            //if (step.X >= 0 && step.X < 8 && step.Y >= 0 && step.Y < 8)
+            //{
+            chessboard[movement.myPiece.position.X, movement.myPiece.position.Y] = null;
+            //piece.position.X = piece.position.X + step.X;
+            //piece.position.Y = piece.position.Y + step.Y;
+            chessboard[movement.futurePosition.X, movement.futurePosition.Y] = movement.myPiece;
+
+            Console.WriteLine("hoooooopppas attt dddeeeen fffllyyytttaaaddddeee");
+            Console.ReadKey();
+            //}
+
         }
 
         public void CreateAndAddAllPiecesToPieceList()
@@ -66,7 +67,7 @@ namespace ChessGame
             pieceList.Add(new Pawn(new Position(1, 6), ConsoleColor.White));
             pieceList.Add(new Pawn(new Position(1, 7), ConsoleColor.White));
             pieceList.Add(new King(new Position(0, 4), ConsoleColor.White));
-            pieceList.Add(new Queen(new Position(4, 3), ConsoleColor.White));
+            pieceList.Add(new Queen(new Position(0, 3), ConsoleColor.White));
             pieceList.Add(new Knight(new Position(0, 1), ConsoleColor.White));
             pieceList.Add(new Knight(new Position(0, 6), ConsoleColor.White));
             pieceList.Add(new Rook(new Position(0, 0), ConsoleColor.White));
@@ -74,9 +75,9 @@ namespace ChessGame
             pieceList.Add(new Bishop(new Position(0, 2), ConsoleColor.White));
             pieceList.Add(new Bishop(new Position(0, 5), ConsoleColor.White));
 
-            pieceList.Add(new Pawn(new Position(2, 2), ConsoleColor.Red));
+            pieceList.Add(new Pawn(new Position(6, 0), ConsoleColor.Red));
             pieceList.Add(new Pawn(new Position(6, 1), ConsoleColor.Red));
-            pieceList.Add(new Pawn(new Position(5, 2), ConsoleColor.Red));
+            pieceList.Add(new Pawn(new Position(6, 2), ConsoleColor.Red));
             pieceList.Add(new Pawn(new Position(6, 3), ConsoleColor.Red));
             pieceList.Add(new Pawn(new Position(6, 4), ConsoleColor.Red));
             pieceList.Add(new Pawn(new Position(6, 5), ConsoleColor.Red));

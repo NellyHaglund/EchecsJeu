@@ -12,7 +12,7 @@ namespace ChessGame
             PieceColour = color;
             PieceValue = 4;
             PieceChar = 'H';
-            PossibleMovesThisTime = new List<Position>();
+            PossibleMovesThisTime = new List<Piece>();
             PossibleKillsThisTime = new List<Piece>();
             AllPossibleMovesList = new List<List<Position>>()
             {

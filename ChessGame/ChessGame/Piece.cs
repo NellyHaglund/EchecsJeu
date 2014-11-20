@@ -11,7 +11,7 @@ namespace ChessGame
         public char PieceChar { get; set; }
         public int PieceValue { get; set; }
         public List<List<Position>> AllPossibleMovesList { get; set; }
-        public List<Position> PossibleMovesThisTime { get; set; }
+        public List<Piece> PossibleMovesThisTime { get; set; }
         public List<Piece> PossibleKillsThisTime { get; set; }
 
      
