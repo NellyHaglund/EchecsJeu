@@ -30,7 +30,7 @@ namespace ChessGame
             Console.ReadLine();
 
             bool gameOver = false;
-
+            int turn = 0;
             while (gameOver == false)
             {
 
@@ -38,10 +38,10 @@ namespace ChessGame
                 whitePlayer.ChoosePieceToPlay();
                 var moveInfo = whitePlayer.RandomizeMoveInPossibleMoveList();
                 moveinfo = new MoveInfo(moveInfo);
-                
+                turn++;
                 gameboard.PrintGameboard();
                 Console.WriteLine(moveinfo.PrintMove());
-
+                Console.WriteLine("WhiteTurn: " + turn);
 
                 Console.ReadLine();
                 Console.Clear();
@@ -50,8 +50,10 @@ namespace ChessGame
                 
                moveInfo = blackPlayer.RandomizeMoveInPossibleMoveList();
                moveinfo = new MoveInfo(moveInfo);
+               turn++;
                gameboard.PrintGameboard();
                Console.WriteLine(moveinfo.PrintMove());
+               Console.WriteLine("BlackTurn: " + turn);
                Console.ReadLine();
              
 

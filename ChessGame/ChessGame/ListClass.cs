@@ -25,7 +25,8 @@ namespace ChessGame
 
         public void SeparatePiecesIntoTwoLists()
         {
-
+            playerBlackList.Clear();
+            playerWhiteList.Clear();
             foreach (var piece in gameboard.pieceList)
             {
                 if (piece.PieceColour == ConsoleColor.Red)
