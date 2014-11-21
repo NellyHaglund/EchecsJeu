@@ -12,8 +12,8 @@ namespace ChessGame
         private Gameboard gameboard;
         private Player blackPlayer;
         private Player whitePlayer;
-        private Piece piece;
         private MoveInfo moveinfo;
+        public ListClass listClass;
 
         public Game()
         {
@@ -34,6 +34,11 @@ namespace ChessGame
             while (gameOver == false)
             {
 
+                //if (gameboard.pieceList.Contains)
+                //{
+                //    gameOver = true;
+                //    Console.WriteLine("GAME OVER, WHITE PLAYER WON!");
+                //}
                 Console.Clear();
                 whitePlayer.ChoosePieceToPlay();
                 var moveInfo = whitePlayer.RandomizeMoveInPossibleMoveList();
@@ -42,20 +47,25 @@ namespace ChessGame
                 gameboard.PrintGameboard();
                 Console.WriteLine(moveinfo.PrintMove());
                 Console.WriteLine("WhiteTurn: " + turn);
+                
 
                 Console.ReadLine();
                 Console.Clear();
 
-                blackPlayer.ChoosePieceToPlay();
-                
+               blackPlayer.ChoosePieceToPlay();                
                moveInfo = blackPlayer.RandomizeMoveInPossibleMoveList();
                moveinfo = new MoveInfo(moveInfo);
                turn++;
                gameboard.PrintGameboard();
                Console.WriteLine(moveinfo.PrintMove());
                Console.WriteLine("BlackTurn: " + turn);
+               //if (listClass.playerWhiteList.Count == null)
+               //{
+               //    gameOver = true;
+               //    Console.WriteLine("GAME OVER, BLACK PLAYER WON!");
+               //}
                Console.ReadLine();
-             
+               
 
             }
         }

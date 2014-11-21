@@ -28,6 +28,7 @@ namespace ChessGame
         {
             PossibleFinalKillMoves.Clear();
             PossibleFinalMoves.Clear();
+            listClass.SeparatePiecesIntoTwoLists();
             if (color == ConsoleColor.White)
             {
                 foreach (var piece in listClass.playerWhiteList)
@@ -76,6 +77,10 @@ namespace ChessGame
                         piece.position.Y + step.Y >= 0 && piece.position.Y + step.Y <= 7)
                     {
                         if (gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] == null)
+                        {
+                            ifStepIsWithinGameboard(step, piece);
+                        }
+                        else
                         {
                             ifStepIsWithinGameboard(step, piece);
                         }
@@ -190,13 +195,13 @@ namespace ChessGame
                     {
                         MovementOptions movementOption = new MovementOptions(step, piece);
                         PossibleFinalKillMoves.Add(movementOption);
-                        Console.WriteLine(piece2 + " På position " + piece2.position +
-                        " Kan bli dödad av " + piece + " på pos: " + piece.position);
+                        //Console.WriteLine(piece2 + " På position " + piece2.position +
+                        //" Kan bli dödad av " + piece + " på pos: " + piece.position);
                     }
 
 
 
-                    
+
                     //  Detta använder vi sen när vi valt kill för att spara undan den döde spelaren Remove från gameboard.pieceLIst och lägg till på ny lista över döda pjäser
                     // 
                 }
@@ -255,7 +260,10 @@ namespace ChessGame
                 //        highestValue = killMove.myPiece.PieceValue;
                 //    }
                 //}
-                int choice = random.Next(PossibleFinalKillMoves.Count);
+                //Random random = new Random();
+              
+             
+                int choice = new Random().Next(0, PossibleFinalKillMoves.Count);
                 var movement = PossibleFinalKillMoves[choice];
                 foreach (var pieceToBeRemoved in gameboard.pieceList)
                 {
@@ -286,13 +294,22 @@ namespace ChessGame
             }
             else
             {
-                int choice = random.Next(PossibleFinalMoves.Count);
-                var movement = PossibleFinalMoves[choice];
-                movement.myPiece.position.X = movement.futurePosition.X;
-                movement.myPiece.position.Y = movement.futurePosition.Y;
+               
+                int choice = new Random().Next(PossibleFinalMoves.Count);
+                if (PossibleFinalKillMoves.Count == 0)
+                {
+                    Console.WriteLine("Game Over");                    
+                }                
+                    var movement = PossibleFinalMoves[choice];
+                    movement.myPiece.position.X = movement.futurePosition.X;
+                    movement.myPiece.position.Y = movement.futurePosition.Y;
+                    gameboard.GiveStartPositionsToPieces();
+                    return movement;
+                
 
-                gameboard.GiveStartPositionsToPieces();
-                return movement;
+
+                
+                
 
             }
         }
