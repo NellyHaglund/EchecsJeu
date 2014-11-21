@@ -200,17 +200,9 @@ namespace ChessGame
             MovementOptions movementOption = new MovementOptions(step,piece);
             PossibleFinalMoves.Add(movementOption);
 
-            //piece.PossibleMovesThisTime.Add(piece);
             
-
-         //   foreach (var p in piece.PossibleMovesThisTime)
-         //   {
-         ////      Console.WriteLine(p.Item1+" På position " + piece.position+ " Kan gå: "+ p.Item2);
-         //   }
-
-            
-           Console.WriteLine("Lade till i PossibleMovesThisTime: " + piece + piece.position +
-                               " &       " + step + " i listan");
+         //  Console.WriteLine("Lade till i PossibleMovesThisTime: " + piece + piece.position +
+         //                     " &       " + step + " i listan");
         }
 
         //public void CheckForBestMove(Position step, Piece piece)
@@ -239,18 +231,21 @@ namespace ChessGame
           //  Console.WriteLine("Detta är det högsta värdet, {0}, och det är en {1}", highestValue, piece);
             
         //}
-        public void RandomizeMoveInPossibleMoveList()
+        public MovementOptions RandomizeMoveInPossibleMoveList()
         {
            
             
            int choice = random.Next(PossibleFinalMoves.Count);
-           var elementAtChoice = PossibleFinalMoves.ElementAt(choice);
+        //   var elementAtChoice = PossibleFinalMoves[choice];
            var movement = PossibleFinalMoves[choice];
 
-           Console.WriteLine("pjäs"+ elementAtChoice.ToString() +" " + movement.ToString());
-           Console.ReadKey();
-           gameboard.UpdatePosition(movement);
+        
+           movement.myPiece.position.X = movement.futurePosition.X;
+           movement.myPiece.position.Y = movement.futurePosition.Y;
             
+
+           gameboard.GiveStartPositionsToPieces();
+           return movement;
         }
     }
 

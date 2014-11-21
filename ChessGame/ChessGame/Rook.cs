@@ -59,5 +59,9 @@ namespace ChessGame
                 }
             };
         }
+        public override string ToString()
+        {
+            return "Rook ";
+        }
     }
 }

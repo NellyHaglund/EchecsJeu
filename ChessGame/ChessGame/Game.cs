@@ -13,17 +13,19 @@ namespace ChessGame
         private Player blackPlayer;
         private Player whitePlayer;
         private Piece piece;
-
+        private MoveInfo moveinfo;
 
         public Game()
         {
             gameboard = new Gameboard();
             blackPlayer = new Player(ConsoleColor.Red, gameboard);
             whitePlayer = new Player(ConsoleColor.White, gameboard);
+
         }
 
         public void StartGame()
         {
+
             gameboard.PrintGameboard();
             Console.ReadLine();
 
@@ -34,16 +36,25 @@ namespace ChessGame
 
                 Console.Clear();
                 whitePlayer.ChoosePieceToPlay();
-                whitePlayer.RandomizeMoveInPossibleMoveList();
+                var moveInfo = whitePlayer.RandomizeMoveInPossibleMoveList();
+                moveinfo = new MoveInfo(moveInfo);
+                
                 gameboard.PrintGameboard();
+                Console.WriteLine(moveinfo.PrintMove());
+
+
                 Console.ReadLine();
                 Console.Clear();
 
                 blackPlayer.ChoosePieceToPlay();
-                blackPlayer.RandomizeMoveInPossibleMoveList();
-                gameboard.PrintGameboard();
-                Console.ReadLine();
                 
+               moveInfo = blackPlayer.RandomizeMoveInPossibleMoveList();
+               moveinfo = new MoveInfo(moveInfo);
+               gameboard.PrintGameboard();
+               Console.WriteLine(moveinfo.PrintMove());
+               Console.ReadLine();
+             
+
             }
         }
     }

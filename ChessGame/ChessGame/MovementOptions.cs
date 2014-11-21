@@ -11,13 +11,14 @@ namespace ChessGame
     {
         public Piece myPiece;
         public Position futurePosition;   // = step
-
+        public Position oldPosition;
 
         public MovementOptions(Position step, Piece piece)
         {
+           
 
-
-            futurePosition = step;
+            futurePosition = new Position(piece.position.X,piece.position.Y);
+            oldPosition = new Position(futurePosition.X, futurePosition.Y);
             myPiece = piece;
             futurePosition.X = piece.position.X + step.X;
             futurePosition.Y = piece.position.Y + step.Y;

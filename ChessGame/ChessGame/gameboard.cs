@@ -18,6 +18,7 @@ namespace ChessGame
 
         public void PrintGameboard()
         {
+            Console.Clear();
 
             for (int x = 0; x < 8; x++)
             {
@@ -34,6 +35,7 @@ namespace ChessGame
                         Console.ForegroundColor = chessboard[x, y].PieceColour;
 
                         Console.Write("[{0}]", chessboard[x, y].PieceChar);
+                        Console.ResetColor();
 
                     }
                 }
@@ -42,16 +44,8 @@ namespace ChessGame
 
         public void UpdatePosition(MovementOptions movement)
         {
-            //if (step.X >= 0 && step.X < 8 && step.Y >= 0 && step.Y < 8)
-            //{
-            chessboard[movement.myPiece.position.X, movement.myPiece.position.Y] = null;
-            //piece.position.X = piece.position.X + step.X;
-            //piece.position.Y = piece.position.Y + step.Y;
-            chessboard[movement.futurePosition.X, movement.futurePosition.Y] = movement.myPiece;
-
-            Console.WriteLine("hoooooopppas attt dddeeeen fffllyyytttaaaddddeee");
-            Console.ReadKey();
-            //}
+            GiveStartPositionsToPieces();
+      
 
         }
 
@@ -94,8 +88,10 @@ namespace ChessGame
 
         }
 
-        private void GiveStartPositionsToPieces()
+        public void GiveStartPositionsToPieces()
         {
+            Array.Clear(chessboard, 0, 64);
+            
             foreach (var piece in pieceList)
             {
                 chessboard[piece.position.X, piece.position.Y] = piece;

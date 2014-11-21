@@ -14,11 +14,6 @@ namespace ChessGame
         public List<Piece> PossibleMovesThisTime { get; set; }
         public List<Piece> PossibleKillsThisTime { get; set; }
 
-     
 
-        //public virtual List<List<Position>> PossibleMoves()
-        //{
-        //    return
-        //}
     }
 }
