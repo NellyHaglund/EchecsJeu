@@ -5,8 +5,7 @@ namespace ChessGame
 {
     public class Bishop : Piece
     {
-        
-
+       
         public Bishop(Position position, ConsoleColor color)
         {
             this.position = position;

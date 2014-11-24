@@ -299,10 +299,10 @@ namespace ChessGame
                 if (PossibleFinalKillMoves.Count == 0)
                 {
                     Console.WriteLine("Game Over");
-                    //System.Threading.Thread.Sleep(3000);
-                    //Environment.Exit(0);
+                    System.Threading.Thread.Sleep(2000);
+                    Environment.Exit(0);
                     
-                }      
+                } 
           
                     var movement = PossibleFinalMoves[choice];
                     movement.myPiece.position.X = movement.futurePosition.X;
