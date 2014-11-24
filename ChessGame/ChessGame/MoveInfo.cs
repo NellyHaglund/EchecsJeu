@@ -18,7 +18,9 @@ namespace ChessGame
 
         public string PrintMove()
         {
-            return string.Format("\r\n\r\n"+MoveOptionInfo.myPiece.ToString() + "On position " +MoveOptionInfo.oldPosition.ToString() + " moves to " + MoveOptionInfo.futurePosition.ToString());
+            return string.Format("\r\n\r\n"+MoveOptionInfo.myPiece.ToString() + "On Position" 
+                                  +MoveOptionInfo.oldPosition.ToString() + "\nMoves To: " + 
+                                  MoveOptionInfo.futurePosition.ToString());
         }
     }
 }

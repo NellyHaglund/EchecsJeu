@@ -14,7 +14,7 @@ namespace ChessGame
 
         public override string ToString()
         {
-            return "X: " + X.ToString() + " Y: " + Y.ToString();
+            return " X: " + X.ToString() + " Y: " + Y.ToString();
         }
 
 

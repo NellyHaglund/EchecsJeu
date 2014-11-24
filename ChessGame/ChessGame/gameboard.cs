@@ -36,7 +36,6 @@ namespace ChessGame
 
                         Console.Write("[{0}]", chessboard[x, y].PieceChar);
                         Console.ResetColor();
-
                     }
                 }
             }
@@ -45,7 +44,7 @@ namespace ChessGame
         public void UpdatePosition(MovementOptions movement)
         {
             GiveStartPositionsToPieces();
-      
+
 
         }
 
@@ -91,7 +90,7 @@ namespace ChessGame
         public void GiveStartPositionsToPieces()
         {
             Array.Clear(chessboard, 0, 64);
-            
+
             foreach (var piece in pieceList)
             {
                 chessboard[piece.position.X, piece.position.Y] = piece;

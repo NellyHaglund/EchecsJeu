@@ -46,26 +46,31 @@ namespace ChessGame
                 turn++;
                 gameboard.PrintGameboard();
                 Console.WriteLine(moveinfo.PrintMove());
-                Console.WriteLine("WhiteTurn: " + turn);
-                
+                Console.WriteLine("\r\nTurn: " + turn);
+                whitePlayer.PrintWhiteKilledPieces();
+                blackPlayer.PrintBlackKilledPieces();
 
-                Console.ReadLine();
+
+                Console.ReadKey();
                 Console.Clear();
 
-               blackPlayer.ChoosePieceToPlay();                
-               moveInfo = blackPlayer.RandomizeMoveInPossibleMoveList();
-               moveinfo = new MoveInfo(moveInfo);
-               turn++;
-               gameboard.PrintGameboard();
-               Console.WriteLine(moveinfo.PrintMove());
-               Console.WriteLine("BlackTurn: " + turn);
-               //if (listClass.playerWhiteList.Count == null)
-               //{
-               //    gameOver = true;
-               //    Console.WriteLine("GAME OVER, BLACK PLAYER WON!");
-               //}
-               Console.ReadLine();
+                blackPlayer.ChoosePieceToPlay();
+                moveInfo = blackPlayer.RandomizeMoveInPossibleMoveList();
+                moveinfo = new MoveInfo(moveInfo);
+                turn++;
+                gameboard.PrintGameboard();
+                Console.WriteLine(moveinfo.PrintMove());
+                Console.WriteLine("\r\nTurn: " + turn); 
+                whitePlayer.PrintWhiteKilledPieces();
+                blackPlayer.PrintBlackKilledPieces();
                
+                //if (listClass.playerWhiteList.Count == null)
+                //{
+                //    gameOver = true;
+                //    Console.WriteLine("GAME OVER, BLACK PLAYER WON!");
+                //}
+                Console.ReadKey();
+
 
             }
         }

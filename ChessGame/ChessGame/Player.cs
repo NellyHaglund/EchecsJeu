@@ -12,7 +12,7 @@ namespace ChessGame
         private ConsoleColor color;
         private Gameboard gameboard;
         Random random = new Random();
-        List<MovementOptions> KilledPieces;
+        List<Piece> KilledPieces;
         List<MovementOptions> PossibleFinalMoves;
         List<MovementOptions> PossibleFinalKillMoves;
         public Player(ConsoleColor color, Gameboard gameboard)
@@ -22,7 +22,7 @@ namespace ChessGame
             listClass = new ListClass(gameboard);
             PossibleFinalMoves = new List<MovementOptions>();
             PossibleFinalKillMoves = new List<MovementOptions>();
-            KilledPieces = new List<MovementOptions>();
+            KilledPieces = new List<Piece>();
         }
         public void ChoosePieceToPlay()
         {
@@ -261,20 +261,21 @@ namespace ChessGame
                 //    }
                 //}
                 //Random random = new Random();
-              
-             
+
+
                 int choice = new Random().Next(0, PossibleFinalKillMoves.Count);
                 var movement = PossibleFinalKillMoves[choice];
                 foreach (var pieceToBeRemoved in gameboard.pieceList)
                 {
                     if (pieceToBeRemoved.position.X == movement.futurePosition.X && pieceToBeRemoved.position.Y == movement.futurePosition.Y)
                     {
+                        KilledPieces.Add(pieceToBeRemoved);
                         gameboard.pieceList.Remove(pieceToBeRemoved);
+                        //KilledPieces.ForEach(Console.WriteLine);
+
                         break;
                     }
                 }
-                //gameboard.pieceList.RemoveAt();
-
                 movement.myPiece.position.X = movement.futurePosition.X;
                 movement.myPiece.position.Y = movement.futurePosition.Y;
                 //foreach (var piece2 in gameboard.piecelist)
@@ -287,37 +288,56 @@ namespace ChessGame
                 //    }
 
                 //}
-
-
                 gameboard.GiveStartPositionsToPieces();
                 return movement;
             }
             else
             {
-               
                 int choice = new Random().Next(PossibleFinalMoves.Count);
-                if (PossibleFinalKillMoves.Count == 0)
+
+                if (PossibleFinalMoves.Count == 0)
                 {
                     Console.WriteLine("Game Over");
                     System.Threading.Thread.Sleep(2000);
                     Environment.Exit(0);
-                    
-                } 
-          
-                    var movement = PossibleFinalMoves[choice];
-                    movement.myPiece.position.X = movement.futurePosition.X;
-                    movement.myPiece.position.Y = movement.futurePosition.Y;
-                    gameboard.GiveStartPositionsToPieces();
-                    return movement;
-                
-
-
-                
-                
-
+                }
+                var movement = PossibleFinalMoves[choice];
+                movement.myPiece.position.X = movement.futurePosition.X;
+                movement.myPiece.position.Y = movement.futurePosition.Y;
+                gameboard.GiveStartPositionsToPieces();
+                return movement;
             }
-
         }
-    }
 
+        public void PrintBlackKilledPieces()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            var num = 0;
+            Console.SetCursorPosition(30, 0);
+            Console.WriteLine("Dead Black Pieces: ");
+            foreach (var killedPiece in KilledPieces)
+            {
+                num++;
+                Console.SetCursorPosition(30, num);
+                Console.WriteLine(killedPiece);
+            }
+            Console.ResetColor();
+        }
+        public void PrintWhiteKilledPieces()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            var num = 0;
+            Console.SetCursorPosition(50, 0);
+            Console.WriteLine("Dead White Pieces: ");
+
+            foreach (var killedPiece in KilledPieces)
+            {
+                num++;
+                Console.SetCursorPosition(50, num);
+                Console.WriteLine(killedPiece);
+            }
+            Console.ResetColor();
+        }
+
+    }
 }
