@@ -18,27 +18,76 @@ namespace ChessGame
         public Game()
         {
             gameboard = new Gameboard();
-            blackPlayer = new Player(ConsoleColor.Red, gameboard);
+            blackPlayer = new Player(ConsoleColor.Black, gameboard);
             whitePlayer = new Player(ConsoleColor.White, gameboard);
 
         }
 
+        public void BeepSound()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(12, 10);
+            Console.WriteLine("Chessgame by Nelly, Robin & Jakob".ToUpper());
+            System.Threading.Thread.Sleep(2000);
+            Console.Clear();
+
+            for (int x = 0; x < 8; x++)
+            {
+                System.Threading.Thread.Sleep(200);
+                System.Console.Beep(1900, 250);
+                Console.WriteLine();
+                for (int y = 0; y < 8; y++)
+                {
+                    var backgroundColor = ConsoleColor.Gray;
+                    var consoleColor = ConsoleColor.DarkGray;
+                    if (ColourBackground(x, y))
+                    {
+                        Console.BackgroundColor = backgroundColor;
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = consoleColor;
+                    }
+                    if (gameboard.chessboard[x, y] == null)
+                    {
+                        if (ColourBackground(x, y))
+                        {
+                            Console.BackgroundColor = backgroundColor;
+                        }
+                        else
+                        {
+                            Console.BackgroundColor = consoleColor;
+                        }
+                        Console.Write("   ");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = gameboard.chessboard[x, y].PieceColour;
+                        Console.Write(" {0} ", gameboard.chessboard[x, y].PieceChar);
+                        Console.ResetColor();
+                    }
+                }
+            }
+        }
+        private bool ColourBackground(int x, int y)
+        {
+            return ((x % 2) + (y % 2)) % 2 == 0;
+        }
+
         public void StartGame()
         {
+            BeepSound();
 
             gameboard.PrintGameboard();
             Console.ReadLine();
 
             bool gameOver = false;
             int turn = 0;
+
             while (gameOver == false)
             {
 
-                //if (gameboard.pieceList.Contains)
-                //{
-                //    gameOver = true;
-                //    Console.WriteLine("GAME OVER, WHITE PLAYER WON!");
-                //}
                 Console.Clear();
                 whitePlayer.ChoosePieceToPlay();
                 var moveInfo = whitePlayer.RandomizeMoveInPossibleMoveList();
@@ -50,7 +99,6 @@ namespace ChessGame
                 whitePlayer.PrintWhiteKilledPieces();
                 blackPlayer.PrintBlackKilledPieces();
 
-
                 Console.ReadKey();
                 Console.Clear();
 
@@ -60,18 +108,11 @@ namespace ChessGame
                 turn++;
                 gameboard.PrintGameboard();
                 Console.WriteLine(moveinfo.PrintMove());
-                Console.WriteLine("\r\nTurn: " + turn); 
+                Console.WriteLine("\r\nTurn: " + turn);
                 whitePlayer.PrintWhiteKilledPieces();
                 blackPlayer.PrintBlackKilledPieces();
-               
-                //if (listClass.playerWhiteList.Count == null)
-                //{
-                //    gameOver = true;
-                //    Console.WriteLine("GAME OVER, BLACK PLAYER WON!");
-                //}
+
                 Console.ReadKey();
-
-
             }
         }
     }

@@ -127,7 +127,7 @@ namespace ChessGame
                                 return;
                             }
                         }
-                        else if (piece.PieceColour == ConsoleColor.Red)
+                        else if (piece.PieceColour == ConsoleColor.Black)
                         {
                             if (step.X > 0)
                             {
@@ -159,7 +159,7 @@ namespace ChessGame
                                         return;
                                     }
                                 }
-                                else if (piece.PieceColour == ConsoleColor.Red)
+                                else if (piece.PieceColour == ConsoleColor.Black)
                                 {
                                     if (step.X > 0)
                                     {
@@ -195,29 +195,15 @@ namespace ChessGame
                     {
                         MovementOptions movementOption = new MovementOptions(step, piece);
                         PossibleFinalKillMoves.Add(movementOption);
-                        //Console.WriteLine(piece2 + " På position " + piece2.position +
-                        //" Kan bli dödad av " + piece + " på pos: " + piece.position);
                     }
-
-
-
-
-                    //  Detta använder vi sen när vi valt kill för att spara undan den döde spelaren Remove från gameboard.pieceLIst och lägg till på ny lista över döda pjäser
-                    // 
                 }
             }
-
-
         }
 
         private void AddPossibleMovesToList(Position step, Piece piece)
         {
             MovementOptions movementOption = new MovementOptions(step, piece);
             PossibleFinalMoves.Add(movementOption);
-
-
-            //  Console.WriteLine("Lade till i PossibleMovesThisTime: " + piece + piece.position +
-            //                     " &       " + step + " i listan");
         }
 
         //public void CheckForBestMove(Position step, Piece piece)
@@ -251,7 +237,6 @@ namespace ChessGame
 
             if (PossibleFinalKillMoves.Count > 0)
             {
-
                 //int highestValue = 0;
                 //foreach (var killMove in PossibleFinalKillMoves)
                 //{
@@ -297,9 +282,15 @@ namespace ChessGame
 
                 if (PossibleFinalMoves.Count == 0)
                 {
-                    Console.WriteLine("Game Over");
-                    System.Threading.Thread.Sleep(2000);
-                    Environment.Exit(0);
+                    while (true)
+                    {
+                        Console.Write("                          GAME OVER");
+                        System.Threading.Thread.Sleep(500);
+                        //Environment.Exit(0);
+                    }
+
+                    //Console.SetCursorPosition(25,10);
+                    
                 }
                 var movement = PossibleFinalMoves[choice];
                 movement.myPiece.position.X = movement.futurePosition.X;
@@ -311,10 +302,10 @@ namespace ChessGame
 
         public void PrintBlackKilledPieces()
         {
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
             var num = 0;
             Console.SetCursorPosition(30, 0);
-            Console.WriteLine("Dead Black Pieces: ");
+            Console.WriteLine("Dead White Pieces: ");
             foreach (var killedPiece in KilledPieces)
             {
                 num++;
@@ -325,10 +316,10 @@ namespace ChessGame
         }
         public void PrintWhiteKilledPieces()
         {
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             var num = 0;
             Console.SetCursorPosition(50, 0);
-            Console.WriteLine("Dead White Pieces: ");
+            Console.WriteLine("Dead Black Pieces: ");
 
             foreach (var killedPiece in KilledPieces)
             {
