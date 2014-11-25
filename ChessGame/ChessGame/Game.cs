@@ -77,7 +77,7 @@ namespace ChessGame
 
         public void StartGame()
         {
-         //   BeepSound();
+            BeepSound();
 
             gameboard.PrintGameboard();
             Console.ReadLine();
