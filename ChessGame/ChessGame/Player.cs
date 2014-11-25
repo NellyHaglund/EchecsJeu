@@ -54,6 +54,26 @@ namespace ChessGame
         }
         public void SavesPossibleMoves(Piece piece)
         {
+            if (piece.PieceValue == 1 && piece.position.X == 7 || piece.PieceValue == 1 && piece.position.X == 0)
+            {
+                gameboard.PrintGameboard();
+                Console.Clear();
+                gameboard.pieceList.Remove(piece);
+                piece = new Queen(piece.position, piece.PieceColour);
+                gameboard.pieceList.Add(piece);
+                
+                gameboard.PrintGameboard();
+                
+
+
+
+            }
+
+
+
+
+
+
             foreach (var directionList in piece.AllPossibleMovesList)
             {
                 TryAllDirections(directionList, piece);
@@ -69,6 +89,21 @@ namespace ChessGame
             {
                 if (piece.PieceValue == 1)
                 {
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     GetPawnLogic(step, piece);
                 }
                 else if (piece.PieceValue == 4)
@@ -112,9 +147,11 @@ namespace ChessGame
         }
         private void GetPawnLogic(Position step, Piece piece)
         {
-            if ((piece.position.X + step.X >= 0 && piece.position.X + step.X <= 7 &&
-                    piece.position.Y + step.Y >= 0 && piece.position.Y + step.Y <= 7))
+
+            if (piece.position.X + step.X >= 0 && piece.position.X + step.X <= 7 &&
+                        piece.position.Y + step.Y >= 0 && piece.position.Y + step.Y <= 7)
             {
+
                 if ((gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] == null))
                 {
                     if (piece.position.Y + step.Y == piece.position.Y)
@@ -126,6 +163,7 @@ namespace ChessGame
                             {
                                 return;
                             }
+
                         }
                         else if (piece.PieceColour == ConsoleColor.Black)
                         {
@@ -133,10 +171,13 @@ namespace ChessGame
                             {
                                 return;
                             }
+
+
                         }
                         ifStepIsWithinGameboard(step, piece);
                         return;
                     }
+
                 }
                 else
                 {
@@ -191,11 +232,17 @@ namespace ChessGame
             {
                 if (piece2.position.X == piece.position.X + step.X && piece.position.Y + step.Y == piece2.position.Y)
                 {
+                    if (piece2.PieceChar == 'K')
+                    {
+                        break;
+                    }
                     if (piece.PieceColour != piece2.PieceColour)
                     {
+
                         MovementOptions movementOption = new MovementOptions(step, piece);
                         PossibleFinalKillMoves.Add(movementOption);
                     }
+
                 }
             }
         }
@@ -263,6 +310,9 @@ namespace ChessGame
                 }
                 movement.myPiece.position.X = movement.futurePosition.X;
                 movement.myPiece.position.Y = movement.futurePosition.Y;
+
+
+
                 //foreach (var piece2 in gameboard.piecelist)
                 //{
                 //    if (movement.oldposition.x == movement.mypiece.position.x + movement.futureposition.x && piece2.position.y == movement.mypiece.position.y + movement.futureposition.y)
@@ -290,7 +340,7 @@ namespace ChessGame
                     }
 
                     //Console.SetCursorPosition(25,10);
-                    
+
                 }
                 var movement = PossibleFinalMoves[choice];
                 movement.myPiece.position.X = movement.futurePosition.X;
