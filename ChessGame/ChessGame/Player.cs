@@ -54,26 +54,6 @@ namespace ChessGame
         }
         public void SavesPossibleMoves(Piece piece)
         {
-            if (piece.PieceValue == 1 && piece.position.X == 7 || piece.PieceValue == 1 && piece.position.X == 0)
-            {
-                gameboard.PrintGameboard();
-                Console.Clear();
-                gameboard.pieceList.Remove(piece);
-                piece = new Queen(piece.position, piece.PieceColour);
-                gameboard.pieceList.Add(piece);
-                
-                gameboard.PrintGameboard();
-                
-
-
-
-            }
-
-
-
-
-
-
             foreach (var directionList in piece.AllPossibleMovesList)
             {
                 TryAllDirections(directionList, piece);
@@ -89,21 +69,6 @@ namespace ChessGame
             {
                 if (piece.PieceValue == 1)
                 {
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     GetPawnLogic(step, piece);
                 }
                 else if (piece.PieceValue == 4)
@@ -238,11 +203,18 @@ namespace ChessGame
                     }
                     if (piece.PieceColour != piece2.PieceColour)
                     {
-
                         MovementOptions movementOption = new MovementOptions(step, piece);
-                        PossibleFinalKillMoves.Add(movementOption);
+                        Console.Clear();
+                        PossibleFinalKillMoves.Add(movementOption);  
+                        foreach (var item in PossibleFinalKillMoves)
+                        {
+                            if (PossibleFinalKillMoves[0].myPiece.PieceValue < piece2.PieceValue)
+                            {
+                                PossibleFinalKillMoves.Insert(0,movementOption);
+                                return;
+                            }
+                        }
                     }
-
                 }
             }
         }
@@ -276,8 +248,8 @@ namespace ChessGame
         //        }
 
         //    }
-        //  Console.WriteLine("Detta är det högsta värdet, {0}, och det är en {1}", highestValue, piece);
-
+        //    Console.WriteLine("Detta är det högsta värdet, {0}, och det är en {1}", highestValue, piece);
+        //    Console.ReadKey();
         //}
         public MovementOptions RandomizeMoveInPossibleMoveList()
         {
@@ -296,7 +268,7 @@ namespace ChessGame
 
 
                 int choice = new Random().Next(0, PossibleFinalKillMoves.Count);
-                var movement = PossibleFinalKillMoves[choice];
+                var movement = PossibleFinalKillMoves[0];
                 foreach (var pieceToBeRemoved in gameboard.pieceList)
                 {
                     if (pieceToBeRemoved.position.X == movement.futurePosition.X && pieceToBeRemoved.position.Y == movement.futurePosition.Y)
@@ -304,15 +276,11 @@ namespace ChessGame
                         KilledPieces.Add(pieceToBeRemoved);
                         gameboard.pieceList.Remove(pieceToBeRemoved);
                         //KilledPieces.ForEach(Console.WriteLine);
-
                         break;
                     }
                 }
                 movement.myPiece.position.X = movement.futurePosition.X;
                 movement.myPiece.position.Y = movement.futurePosition.Y;
-
-
-
                 //foreach (var piece2 in gameboard.piecelist)
                 //{
                 //    if (movement.oldposition.x == movement.mypiece.position.x + movement.futureposition.x && piece2.position.y == movement.mypiece.position.y + movement.futureposition.y)
@@ -323,6 +291,7 @@ namespace ChessGame
                 //    }
 
                 //}
+
                 gameboard.GiveStartPositionsToPieces();
                 return movement;
             }
@@ -338,13 +307,17 @@ namespace ChessGame
                         System.Threading.Thread.Sleep(500);
                         //Environment.Exit(0);
                     }
-
-                    //Console.SetCursorPosition(25,10);
-
                 }
                 var movement = PossibleFinalMoves[choice];
                 movement.myPiece.position.X = movement.futurePosition.X;
                 movement.myPiece.position.Y = movement.futurePosition.Y;
+                if (movement.myPiece.PieceValue == 1 && movement.myPiece.position.X == 7 || movement.myPiece.PieceValue == 1 && movement.myPiece.position.X == 0)
+                {
+                    Console.Clear();
+                    gameboard.pieceList.Remove(movement.myPiece);
+                    movement.myPiece = new Queen(movement.myPiece.position, movement.myPiece.PieceColour);
+                    gameboard.pieceList.Add(movement.myPiece);
+                }
                 gameboard.GiveStartPositionsToPieces();
                 return movement;
             }
