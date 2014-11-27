@@ -81,12 +81,12 @@ namespace ChessGame
             pieceList.Add(new Pawn(new Position(1, 7), consoleColorWhite));
             pieceList.Add(new King(new Position(0, 4), consoleColorWhite));
             pieceList.Add(new Queen(new Position(0, 3), consoleColorWhite));
-            pieceList.Add(new Knight(new Position(5, 1), consoleColorWhite));
+            pieceList.Add(new Knight(new Position(0, 1), consoleColorWhite));
             pieceList.Add(new Knight(new Position(0, 6), consoleColorWhite));
             pieceList.Add(new Rook(new Position(0, 0), consoleColorWhite));
-            pieceList.Add(new Rook(new Position(5, 7), consoleColorWhite));
+            pieceList.Add(new Rook(new Position(0, 7), consoleColorWhite));
             pieceList.Add(new Bishop(new Position(0, 2), consoleColorWhite));
-            pieceList.Add(new Bishop(new Position(5, 5), consoleColorWhite));
+            pieceList.Add(new Bishop(new Position(0, 5), consoleColorWhite));
 
             var consoleColorBLack = ConsoleColor.Black;
             pieceList.Add(new Pawn(new Position(6, 0), consoleColorBLack));

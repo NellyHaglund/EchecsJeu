@@ -193,8 +193,10 @@ namespace ChessGame
         }
         private void AddMovesToKillList(Position step, Piece piece)
         {
+           
             foreach (var piece2 in gameboard.pieceList)
             {
+               
                 if (piece2.position.X == piece.position.X + step.X && piece.position.Y + step.Y == piece2.position.Y)
                 {
                     if (piece2.PieceChar == 'K')
@@ -204,16 +206,21 @@ namespace ChessGame
                     if (piece.PieceColour != piece2.PieceColour)
                     {
                         MovementOptions movementOption = new MovementOptions(step, piece);
-                        Console.Clear();
+
                         PossibleFinalKillMoves.Add(movementOption);  
-                        foreach (var item in PossibleFinalKillMoves)
-                        {
-                            if (PossibleFinalKillMoves[0].myPiece.PieceValue < piece2.PieceValue)
-                            {
-                                PossibleFinalKillMoves.Insert(0,movementOption);
-                                return;
-                            }
-                        }
+                        
+                       
+
+                        //foreach (var item in PossibleFinalKillMoves)
+                        //{
+                            
+                        
+                            
+                        //        PossibleFinalKillMoves.Insert(0,movementOption);
+                        //        return;
+                            
+                        //}
+                        
                     }
                 }
             }
@@ -281,16 +288,7 @@ namespace ChessGame
                 }
                 movement.myPiece.position.X = movement.futurePosition.X;
                 movement.myPiece.position.Y = movement.futurePosition.Y;
-                //foreach (var piece2 in gameboard.piecelist)
-                //{
-                //    if (movement.oldposition.x == movement.mypiece.position.x + movement.futureposition.x && piece2.position.y == movement.mypiece.position.y + movement.futureposition.y)
-                //    {
-                //        killedpieces.add(piece2);
-                //        gameboard.piecelist.remove(piece2);
-                //        break;
-                //    }
-
-                //}
+            
 
                 gameboard.GiveStartPositionsToPieces();
                 return movement;
