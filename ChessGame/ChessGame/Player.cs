@@ -211,7 +211,7 @@ namespace ChessGame
             {
                 int choice = new Random().Next(PossibleFinalMoves.Count);
 
-                if (PossibleFinalMoves.Count == 0)
+                if (gameboard.pieceList.Count == 2)
                 {
                     while (true)
                     {

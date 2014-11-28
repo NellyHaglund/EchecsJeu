@@ -80,8 +80,7 @@ namespace ChessGame
         {
             BeepSound();
 
-            gameboard.PrintGameboard();
-            Console.ReadLine();
+            gameboard.PrintGameboard();            
 
             bool gameOver = false;
             int turn = 0;
@@ -99,7 +98,7 @@ namespace ChessGame
                 whitePlayer.PrintWhiteKilledPieces();
                 blackPlayer.PrintBlackKilledPieces();
 
-                Console.ReadKey();
+                System.Threading.Thread.Sleep(1000);
                 Console.Clear();
 
                 blackPlayer.ChoosePieceToPlay();
@@ -112,7 +111,7 @@ namespace ChessGame
                 whitePlayer.PrintWhiteKilledPieces();
                 blackPlayer.PrintBlackKilledPieces();
 
-                Console.ReadKey();
+                System.Threading.Thread.Sleep(1000);
             }
         }
     }
