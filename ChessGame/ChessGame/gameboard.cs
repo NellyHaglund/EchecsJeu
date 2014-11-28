@@ -6,7 +6,6 @@ namespace ChessGame
     public class Gameboard
     {
         public Piece[,] chessboard = new Piece[8, 8];
-
         public List<Piece> pieceList;
 
         public Gameboard()
@@ -15,7 +14,6 @@ namespace ChessGame
             CreateAndAddAllPiecesToPieceList();
             GiveStartPositionsToPieces();
         }
-
         public void PrintGameboard()
         {
             Console.Clear();
@@ -62,12 +60,10 @@ namespace ChessGame
         {
             return ((x % 2) + (y % 2)) % 2 == 0;
         }
-
         public void UpdatePosition(MovementOptions movement)
         {
             GiveStartPositionsToPieces();
         }
-
         public void CreateAndAddAllPiecesToPieceList()
         {
             var consoleColorWhite = ConsoleColor.White;
@@ -105,7 +101,6 @@ namespace ChessGame
             pieceList.Add(new Rook(new Position(7, 7), consoleColorBLack));
             pieceList.Add(new Bishop(new Position(7, 2), consoleColorBLack));
             pieceList.Add(new Bishop(new Position(7, 5), consoleColorBLack));
-
         }
         public void GiveStartPositionsToPieces()
         {

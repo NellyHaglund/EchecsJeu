@@ -7,15 +7,13 @@ using System.Threading.Tasks;
 namespace ChessGame
 {
     public class Pawn : Piece
-    {
-        
-       
+    {       
         public Pawn(Position position, ConsoleColor color)
         {
             this.position = position;
             PieceColour = color;
             PieceValue = 1;
-            PieceChar = 'B';
+            PieceChar = 'P';
             PossibleMovesThisTime = new List<Piece>();
             PossibleKillsThisTime = new List<Piece>();
             AllPossibleMovesList = new List<List<Position>>()
@@ -45,12 +43,10 @@ namespace ChessGame
                     new Position(- 1, -1)
                 },
             };
-        }
-     
+        }     
         public override string ToString()
         {
             return "Pawn ";
         }
-
     }
 }

@@ -13,9 +13,7 @@ namespace ChessGame
         public MoveInfo(MovementOptions moveop)
         {
             MoveOptionInfo = moveop;
-
         }
-
         public string PrintMove()
         {
             return string.Format("\r\n\r\n"+MoveOptionInfo.myPiece.ToString() + "On Position" 

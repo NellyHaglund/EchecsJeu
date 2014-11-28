@@ -11,18 +11,14 @@ namespace ChessGame
         public List<Piece> playerWhiteList;
         public List<Piece> playerBlackList;
         private Gameboard gameboard;
-        public List<Piece> EnemysToKill;
-
 
         public ListClass(Gameboard gameboard)
         {
             this.gameboard = gameboard;
             playerBlackList = new List<Piece>();
             playerWhiteList = new List<Piece>();
-            EnemysToKill = new List<Piece>();
             SeparatePiecesIntoTwoLists();
         }
-
         public void SeparatePiecesIntoTwoLists()
         {
             playerBlackList.Clear();
@@ -38,8 +34,6 @@ namespace ChessGame
                     playerWhiteList.Add(piece);
                 }
             }
-
         }
-
     }
 }

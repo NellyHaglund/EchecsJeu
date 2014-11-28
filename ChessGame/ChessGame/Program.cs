@@ -6,17 +6,13 @@ using System.Threading.Tasks;
 
 namespace ChessGame
 {
-    public class Program 
+    public class Program
     {
-      
-        
         static void Main(string[] args)
         {
-            
             Game gameClass = new Game();
 
-           gameClass.StartGame();
-
+            gameClass.StartGame();
             Console.ReadLine();
         }
     }

@@ -4,15 +4,13 @@ using System.Collections.Generic;
 namespace ChessGame
 {
     public class Queen : Piece
-    {
-        
-
+    { 
         public Queen(Position position, ConsoleColor color)
         {
             this.position = position;
             PieceColour = color;
             PieceValue = 9;
-            PieceChar = 'D';
+            PieceChar = 'Q';
             PossibleMovesThisTime = new List<Piece>();
             PossibleKillsThisTime = new List<Piece>();
             AllPossibleMovesList = new List<List<Position>>()
@@ -97,7 +95,6 @@ namespace ChessGame
                     new Position(- 6, - 6),
                     new Position(- 7, - 7),
                 }
-
             };
         }
         public override string ToString()

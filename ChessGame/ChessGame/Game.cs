@@ -13,16 +13,12 @@ namespace ChessGame
         private Player blackPlayer;
         private Player whitePlayer;
         private MoveInfo moveinfo;
-        public ListClass listClass;
-
         public Game()
         {
             gameboard = new Gameboard();
             blackPlayer = new Player(ConsoleColor.Black, gameboard);
             whitePlayer = new Player(ConsoleColor.White, gameboard);
-
         }
-
         public void BeepSound()
         {
             Console.ForegroundColor = ConsoleColor.White;
@@ -48,6 +44,7 @@ namespace ChessGame
                     {
                         Console.BackgroundColor = consoleColor;
                     }
+
                     if (gameboard.chessboard[x, y] == null)
                     {
                         if (ColourBackground(x, y))
@@ -69,6 +66,10 @@ namespace ChessGame
                     }
                 }
             }
+            Console.SetCursorPosition(8, 4);
+            Console.WriteLine("CHESS\nPRESS ANY KEY TO START");
+            Console.ReadKey();
+            
         }
         private bool ColourBackground(int x, int y)
         {
@@ -77,7 +78,7 @@ namespace ChessGame
 
         public void StartGame()
         {
-         //   BeepSound();
+            BeepSound();
 
             gameboard.PrintGameboard();
             Console.ReadLine();
@@ -87,7 +88,6 @@ namespace ChessGame
 
             while (gameOver == false)
             {
-
                 Console.Clear();
                 whitePlayer.ChoosePieceToPlay();
                 var moveInfo = whitePlayer.RandomizeMoveInPossibleMoveList();

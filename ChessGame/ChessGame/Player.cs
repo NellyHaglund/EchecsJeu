@@ -34,23 +34,15 @@ namespace ChessGame
                 foreach (var piece in listClass.playerWhiteList)
                 {
                     SavesPossibleMoves(piece);
-                    //  Console.WriteLine("White");
-                    //  Console.ReadKey();
-
                 }
-
             }
             else
             {
                 foreach (var piece in listClass.playerBlackList)
                 {
                     SavesPossibleMoves(piece);
-                    //Console.WriteLine("Black");
-                    //Console.ReadKey();
-
                 }
             }
-
         }
         public void SavesPossibleMoves(Piece piece)
         {
@@ -59,19 +51,15 @@ namespace ChessGame
                 TryAllDirections(directionList, piece);
             }
         }
-
         private void TryAllDirections(List<Position> directionList, Piece piece)
         {
-
-
-            //  piece.PossibleMovesThisTime.Clear();
             foreach (var step in directionList)
             {
-                if (piece.PieceValue == 1)
+                if (piece.PieceValue == 1) //Pawn
                 {
                     GetPawnLogic(step, piece);
                 }
-                else if (piece.PieceValue == 4)
+                else if (piece.PieceValue == 4)//Knight
                 {
                     if (piece.position.X + step.X >= 0 && piece.position.X + step.X <= 7 &&
                         piece.position.Y + step.Y >= 0 && piece.position.Y + step.Y <= 7)
@@ -84,7 +72,6 @@ namespace ChessGame
                         {
                             ifStepIsWithinGameboard(step, piece);
                         }
-
                     }
                 }
                 else if (piece.position.X + step.X >= 0 && piece.position.X + step.X <= 7 &&
@@ -93,7 +80,6 @@ namespace ChessGame
                     if (gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] == null)
                     {
                         ifStepIsWithinGameboard(step, piece);
-
                     }
                     else
                     {
@@ -101,34 +87,23 @@ namespace ChessGame
                         return;
                     }
                 }
-
             }
-
-
-
-
-
-
         }
         private void GetPawnLogic(Position step, Piece piece)
         {
-
             if (piece.position.X + step.X >= 0 && piece.position.X + step.X <= 7 &&
                         piece.position.Y + step.Y >= 0 && piece.position.Y + step.Y <= 7)
             {
-
                 if ((gameboard.chessboard[piece.position.X + step.X, piece.position.Y + step.Y] == null))
                 {
                     if (piece.position.Y + step.Y == piece.position.Y)
                     {
-
                         if (piece.PieceColour == ConsoleColor.White)
                         {
                             if (step.X < 0)
                             {
                                 return;
                             }
-
                         }
                         else if (piece.PieceColour == ConsoleColor.Black)
                         {
@@ -136,13 +111,10 @@ namespace ChessGame
                             {
                                 return;
                             }
-
-
                         }
                         ifStepIsWithinGameboard(step, piece);
                         return;
                     }
-
                 }
                 else
                 {
@@ -192,11 +164,9 @@ namespace ChessGame
             }
         }
         private void AddMovesToKillList(Position step, Piece piece)
-        {
-           
+        {           
             foreach (var piece2 in gameboard.pieceList)
-            {
-               
+            {               
                 if (piece2.position.X == piece.position.X + step.X && piece.position.Y + step.Y == piece2.position.Y)
                 {
                     if (piece2.PieceChar == 'K')
@@ -206,89 +176,33 @@ namespace ChessGame
                     if (piece.PieceColour != piece2.PieceColour)
                     {
                         MovementOptions movementOption = new MovementOptions(step, piece);
-
-                        PossibleFinalKillMoves.Add(movementOption);  
-                        
-                       
-
-                        //foreach (var item in PossibleFinalKillMoves)
-                        //{
-                            
-                        
-                            
-                        //        PossibleFinalKillMoves.Insert(0,movementOption);
-                        //        return;
-                            
-                        //}
-                        
+                        PossibleFinalKillMoves.Add(movementOption);                          
                     }
                 }
             }
         }
-
         private void AddPossibleMovesToList(Position step, Piece piece)
         {
             MovementOptions movementOption = new MovementOptions(step, piece);
             PossibleFinalMoves.Add(movementOption);
-        }
-
-        //public void CheckForBestMove(Position step, Piece piece)
-        //{
-        //    Piece newPiece;
-        //    int highestValue = 0;
-        //    foreach (var piece1 in gameboard.pieceList)
-        //    {
-
-        //        newPiece = piece1;
-        //        if (piece1.position.X == step.X + piece.position.X && piece1.position.Y == step.Y + piece.position.Y)
-        //        {
-        //            listClass.EnemysToKill.Add(newPiece);
-        //        }
-        //    }
-
-        //    for (int i = 0; i < listClass.EnemysToKill.Count; i++)
-        //    {
-
-        //        if (listClass.EnemysToKill[i].PieceValue > highestValue)
-        //        {
-        //            highestValue = listClass.EnemysToKill[i].PieceValue;
-        //        }
-
-        //    }
-        //    Console.WriteLine("Detta är det högsta värdet, {0}, och det är en {1}", highestValue, piece);
-        //    Console.ReadKey();
-        //}
+        }     
         public MovementOptions RandomizeMoveInPossibleMoveList()
         {
-
             if (PossibleFinalKillMoves.Count > 0)
-            {
-                //int highestValue = 0;
-                //foreach (var killMove in PossibleFinalKillMoves)
-                //{
-                //    if (killMove.myPiece.PieceValue > highestValue)
-                //    {
-                //        highestValue = killMove.myPiece.PieceValue;
-                //    }
-                //}
-                //Random random = new Random();
-
-
+            {         
                 int choice = new Random().Next(0, PossibleFinalKillMoves.Count);
-                var movement = PossibleFinalKillMoves[0];
+                var movement = PossibleFinalKillMoves[choice];
                 foreach (var pieceToBeRemoved in gameboard.pieceList)
                 {
                     if (pieceToBeRemoved.position.X == movement.futurePosition.X && pieceToBeRemoved.position.Y == movement.futurePosition.Y)
                     {
                         KilledPieces.Add(pieceToBeRemoved);
                         gameboard.pieceList.Remove(pieceToBeRemoved);
-                        //KilledPieces.ForEach(Console.WriteLine);
                         break;
                     }
                 }
                 movement.myPiece.position.X = movement.futurePosition.X;
-                movement.myPiece.position.Y = movement.futurePosition.Y;
-            
+                movement.myPiece.position.Y = movement.futurePosition.Y;           
 
                 gameboard.GiveStartPositionsToPieces();
                 return movement;
@@ -303,7 +217,6 @@ namespace ChessGame
                     {
                         Console.Write("                          GAME OVER");
                         System.Threading.Thread.Sleep(500);
-                        //Environment.Exit(0);
                     }
                 }
                 var movement = PossibleFinalMoves[choice];
@@ -320,7 +233,6 @@ namespace ChessGame
                 return movement;
             }
         }
-
         public void PrintBlackKilledPieces()
         {
             Console.ForegroundColor = ConsoleColor.White;
@@ -350,6 +262,5 @@ namespace ChessGame
             }
             Console.ResetColor();
         }
-
     }
 }

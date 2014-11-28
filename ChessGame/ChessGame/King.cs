@@ -49,11 +49,9 @@ namespace ChessGame
                 new List<Position>()
                 {
                     new Position( + 1, 0)
-                },
-            
+                },            
             };
         }
-
         public override string ToString()
         {
             return "King ";

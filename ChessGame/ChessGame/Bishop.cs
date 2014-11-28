@@ -4,14 +4,13 @@ using System.Collections.Generic;
 namespace ChessGame
 {
     public class Bishop : Piece
-    {
-       
+    {       
         public Bishop(Position position, ConsoleColor color)
         {
             this.position = position;
             PieceColour = color;
             PieceValue = 3;
-            PieceChar = 'L';
+            PieceChar = 'B';
             PossibleMovesThisTime = new List<Piece>();
             PossibleKillsThisTime = new List<Piece>();
             AllPossibleMovesList = new List<List<Position>>()
@@ -56,7 +55,6 @@ namespace ChessGame
                     new Position(- 6, - 6),
                     new Position(- 7, - 7),
                 }
-
             };
         }
         public override string ToString()

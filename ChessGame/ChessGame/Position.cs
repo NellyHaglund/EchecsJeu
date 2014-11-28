@@ -11,15 +11,10 @@ namespace ChessGame
             X = x;
             Y = y;
         }
-
         public override string ToString()
         {
             Console.ForegroundColor = ConsoleColor.White;
             return " X: " + X.ToString() + " Y: " + Y.ToString();
         }
-
-
-
-
     }
 }

@@ -5,14 +5,12 @@ namespace ChessGame
 {
     public class Rook : Piece
     {
-       
-
         public Rook(Position position, ConsoleColor color)
         {
             this.position = position;
             PieceColour = color;
             PieceValue = 5;
-            PieceChar = 'T';
+            PieceChar = 'R';
             PossibleMovesThisTime = new List<Piece>();
             PossibleKillsThisTime = new List<Piece>();
             AllPossibleMovesList = new List<List<Position>>()
