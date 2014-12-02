@@ -98,7 +98,8 @@ namespace ChessGame
                 whitePlayer.PrintWhiteKilledPieces();
                 blackPlayer.PrintBlackKilledPieces();
 
-                System.Threading.Thread.Sleep(1000);
+                Console.ReadKey();
+               // System.Threading.Thread.Sleep(1000);
                 Console.Clear();
 
                 blackPlayer.ChoosePieceToPlay();
@@ -111,7 +112,8 @@ namespace ChessGame
                 whitePlayer.PrintWhiteKilledPieces();
                 blackPlayer.PrintBlackKilledPieces();
 
-                System.Threading.Thread.Sleep(1000);
+                Console.ReadKey();
+                //System.Threading.Thread.Sleep(1000);
             }
         }
     }
