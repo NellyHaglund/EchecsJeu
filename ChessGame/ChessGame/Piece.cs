@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ChessGame
 {
-    public class Piece
+    public abstract class Piece
     {
         public Position position;   
         public ConsoleColor PieceColour { get; set; }
